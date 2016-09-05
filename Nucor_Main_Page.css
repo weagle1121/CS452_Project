@@ -1,0 +1,95 @@
+/* Main CSS */
+h1, h2, h3, nav, footer {
+ font-family: Georgia, Cambria, "Times New Roman", serif;
+}
+
+body {
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-size: 1.3em;
+   margin: 0;
+   padding: 0;
+}
+
+/* stretches banner across page (can add footer when that's completed)*/
+#header {
+		
+        float:left;
+		padding:15px 0;
+		min-width:100%;
+	}
+
+/*banner image*/
+.banner1{
+	display:block; 
+	width:100%;
+	height:300px;
+/* 	text-align:center; */
+
+	}
+
+/* removes default list settings */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*Change text color(active)/size here*/
+
+ .navbar-inverse .navbar-nav > li {
+   color: white; 
+   font-size: large;
+    }
+ 
+ li a {
+	 color:#4e005e; 
+ }
+ 
+  
+/* Change background color here (not done yet) */
+.navbar-default{
+    background-color: #5c2c9b;
+    border-color: #030033;
+}
+
+
+
+/* removes rounded edges on navbar */
+* {
+	-webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+
+
+/* Unused code */
+
+/*Create a horizontal list*/
+/*
+li {
+	display: inline-block;
+	border-right: 1px solid #bbb;
+	float: right;
+	padding:15px;
+	background-color: #066300;
+	border: 1px solid #6f08b3;
+	
+}
+*/
+
+/*Style for menu links*/
+
+/*
+li a {
+    display: block;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+	padding: 15px 15px 15px 15px;
+}
+*/
+
+
+
+
