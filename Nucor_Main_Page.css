@@ -61,7 +61,13 @@ ul {
     border-radius: 0 !important;
 }
 
-
+/* Size of the calendar div */
+.dhx_cal_container{
+		height: 1000px;
+		margin:auto;
+		padding:70px;
+		width: auto;
+	}
 
 /* Unused code */
 
