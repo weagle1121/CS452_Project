@@ -68,6 +68,14 @@ ul {
 		padding:70px;
 		width: auto;
 	}
+	
+
+/* temporary paragraph formatting for about us */
+p{
+	padding-right: 20%;
+	padding-left: 20%;
+
+}
 
 /* Unused code */
 
