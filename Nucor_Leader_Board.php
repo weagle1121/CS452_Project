@@ -18,7 +18,7 @@
 	
 	
 <div class="container">
-  <h2>Decatur Relay Teams</h2>
+  <h2>Leaderboard</h2>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
