@@ -7,8 +7,10 @@
 	<link href="drop_menu/drop_menu.css" rel="stylesheet">
 	<script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
 	<script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
+	<script src="Bootstrap/bootstrap-3.0.0/js/carousel.js"></script>
 <!-- Redundant <script src="bootstrap/js/bootstrap.min.js"></script> -->
 <!-- CSS is not a script! <script src="bootstrap/css/bootstrap.min.css"></script> -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<?php include 'Nucor_Header.php';?>
 </head>
 
