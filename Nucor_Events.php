@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Nucor Events</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
     <link href="Nucor_Main_Page.css" rel="stylesheet">
 	<script src="codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css" title="no title" charset="utf-8">

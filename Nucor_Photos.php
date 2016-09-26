@@ -3,12 +3,12 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Photo Gallery</title>
     <link href="Nucor_Main_Page.css" rel="stylesheet">
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
 	<link href="drop_menu/drop_menu.css" rel="stylesheet">
-	<script src="jquery-3.1.0.min.js"></script>
-	<script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script> 
-	<script src="bootstrap/css/bootstrap.min.css"></script>
+	<script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
+	<script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
+<!-- Redundant <script src="bootstrap/js/bootstrap.min.js"></script> -->
+<!-- CSS is not a script! <script src="bootstrap/css/bootstrap.min.css"></script> -->
 	<?php include 'Nucor_Header.php';?>
 </head>
 
