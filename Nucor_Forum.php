@@ -12,6 +12,20 @@
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this page -->
     <link href="Nucor_Main_Page.css" rel="stylesheet">
+    <style type="text/css">
+
+	/*background image, should work across web browsers except internet explorer*/
+
+	body {
+	background-image: URL(Forum_BkGr.png);
+	background-repeat: no-repeat;
+	background-position: center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size:cover;
+	}
+	</style>
 <?php include 'Nucor_Header.php';?>
 </head>
 

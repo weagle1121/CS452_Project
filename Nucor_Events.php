@@ -14,14 +14,48 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<title>Nucor Events</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="main.css" rel="stylesheet">
+		<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="Nucor_Main_Page.css" rel="stylesheet">
 
 	<!-- helper libraries -->
-		<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="calendar_lib/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<!-- daypilot libraries -->
-		<script src="js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
+		<script src="calendar_lib/js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
 	<!-- Header for the page -->	
+	<style type="text/css">
+
+	/*background image, should work across web browsers except internet explorer*/
+
+		body {
+		background-image: URL(Events_BkGr.png);
+		background-repeat: no-repeat;
+		background-position: center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size:cover;
+		
+		}
+		
+
+		.main{
+			float: left; 
+			width: 160px; 
+			padding-top: 10%;
+/* 			padding-left: 80px; */
+		}
+		
+/*
+
+		.space{
+			margin-left: 160px; 
+			padding-top: 100px; 
+			padding-right: 80px;
+		}
+*/
+
+		
+	</style>
 		<?php include 'Nucor_Header.php';?>
 		
 	
@@ -29,10 +63,18 @@
 <body>
        
         <div class="main">
-            <div style="float:left; width: 160px;">
+<!--             css affects spacing/location of mini calendars -->
+
+<!--
+            <div style="float: left; 
+					width: 160px; padding-top: 80px;">
+-->
+
+
                 <div id="nav"></div>
             </div>
-            <div style="margin-left: 160px;">
+<!--             css affects spacing/location of large calendar -->
+            <div style="margin-left: 12%; padding-top: 10%; padding-right: 2%;">
                 
                 <div class="space">
                     Theme: <select id="theme">
@@ -215,7 +257,7 @@
             });  
             </script>
 
-        </div>
+<!--         </div> -->
         <div class="clear">
         </div>
         
