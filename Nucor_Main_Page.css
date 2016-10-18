@@ -63,23 +63,25 @@ ul {
 
   /* Controls Pop-up box for the Calendar */
  #event_pop_up{
-	top: 0; 
-	left: 0; 
-	position: fixed; 
-	width: 100%; 
-	height: 120%;
-	background-color: rgba(0,0,0,0.7); 
-	display: none;
-	}
-.popupBoxWrapper{
-	width: 550px; 
-	margin: 50px auto; 
-	text-align: center;
-	}
-.popupBoxContent{
-	background-color: #FFF; 
-	padding: 15px;
-	}
+		top: 0; 
+		left: 0; 
+		position: fixed; 
+		width: 100%; 
+		height: 120%;
+		background-color: rgba(0,0,0,0.7); 
+		display: none;
+		}
+	.popupBoxWrapper{
+		width: 350px; 
+		height:300px;
+		overflow: auto;
+		margin: 150px auto; 
+		text-align: center;
+		}
+	.popupBoxContent{
+		background-color: #FFF; 
+		padding: 15px;
+		}
 	
 
 /* temporary paragraph formatting for about us */
