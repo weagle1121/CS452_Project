@@ -92,7 +92,7 @@
 
             <script type="text/javascript">
                 
-                var nav = new DayPilot.Navigator("nav");
+			   var nav = new DayPilot.Navigator("nav");
                 nav.showMonths = 3;
                 nav.skipMonths = 3;
                 nav.selectMode = "week";
@@ -107,7 +107,7 @@
                 dp.viewType = "Week";
 
                 dp.onEventMoved = function (args) {
-                    $.post("backend_move.php", 
+                    $.post("calendar_lib/backend_move.php", 
                             {
                                 id: args.e.id(),
                                 newStart: args.newStart.toString(),
@@ -119,7 +119,7 @@
                 };
 
                 dp.onEventResized = function (args) {
-                    $.post("backend_resize.php", 
+                    $.post("calendar_lib/backend_resize.php", 
                             {
                                 id: args.e.id(),
                                 newStart: args.newStart.toString(),
@@ -144,7 +144,7 @@
                     });
                     dp.events.add(e);
 
-                    $.post("backend_create.php", 
+                    $.post("calendar_lib/backend_create.php", 
                             {
                                 start: args.start.toString(),
                                 end: args.end.toString(),
@@ -161,21 +161,60 @@
 			   // Calls function toggle_visibility
 			   // Toggles the CSS of event_pop_up on or off
 			   // Sources used : http://www.w3schools.com/js/js_htmldom_html.asp
-			   //			   : https://css-tricks.com/snippets/javascript/showhide-element/
+			   //		   : https://css-tricks.com/snippets/javascript/showhide-element/
 			   
 				dp.onEventClick = function(args) {
      
+					var divID = "event_pop_up";
+					var name = args.e.text();
+					var id = args.e.id();
 					var date = new Date(args.e.start());
-					var start_day = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
-					var start_time = convert_hour(date.getHours(),date.getMinutes());
+					var Sday = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+					var Stime = convert_hour(date.getHours(),date.getMinutes());
 					
 					date = new Date(args.e.end());
-					var end_day = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
-					var end_time = convert_hour(date.getHours(),date.getMinutes());
+					var Eday = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+					var Etime = convert_hour(date.getHours(),date.getMinutes());
 					
-					toggle_visibility('event_pop_up',args.e.text(),start_day,end_day,start_time,end_time);
+					$.post("calendar_lib/backend_details.php", 
+                    {
+                        id:id
+                    }, 
+                    function(data) {
+						toggle_visibility(divID,id,data,name,Sday,Eday,Stime,Etime);
+                    });
+
                 }; 
 
+			// Creates Pop-up window to view event 
+			// Changes the visibility of the div html element by changing the CSS
+			// Displays Name
+			//			Details
+			//			Start Time
+			//			End Time
+				
+				function toggle_visibility(eID,id,details,event_name,start,end,start_time,end_time) {
+
+				// Get Id of the div you want to show/hide
+				 var e = document.getElementById(eID);
+				 
+				 // Get Id of inner div header to display event information
+				 var new_header = document.getElementById("popup_header");
+					new_header.innerHTML = event_name;
+			       
+				 // Changes date_div to display start/end: day/time
+					maincontent = "<p>" + details + "</p><p> Event Start: " + start + " @ " + start_time + 
+								  "<br> Event End: " + end + " @ " + end_time + "</p>";
+					document.getElementById("date_div").innerHTML = maincontent;
+				 
+				 // Show/Hide pop-up  
+				 if(e.style.display == 'block')
+			       e.style.display = 'none';
+			     else
+			       e.style.display = 'block';
+			    }
+				
+				
                 
 				dp.init();
 
@@ -185,7 +224,7 @@
                     var start = dp.visibleStart();
                     var end = dp.visibleEnd();
 
-                    $.post("backend_events.php", 
+                    $.post("calendar_lib/backend_events.php", 
                     {
                         start: start.toString(),
                         end: end.toString()
@@ -196,32 +235,6 @@
                         dp.update();
                     });
                 }
-			// Creates Pop-up window to view event details
-			// Changes the visibility of the div html element by changing the CSS
-			// Displays Event Information
-			//			Start Time
-			//			End Time
-				
-				function toggle_visibility(id,event_name,start,end,start_time,end_time) {
-			     
-				 // Get Id of the div you want to show/hide
-				 var e = document.getElementById(id);
-				 
-				 // Get Id of inner div header to display event information
-				 var new_header = document.getElementById("popup_header");
-					new_header.innerHTML = event_name;
-			       
-				 // Changes date_div to display start/end: day/time
-				 var date_content = "";
-					maincontent = "<p> Event Start: " + start + " @ " + start_time + "</p> Event End: " + end + " @ " + end_time;
-					document.getElementById("date_div").innerHTML = maincontent;
-				 
-				 // Show/Hide pop-up  
-				 if(e.style.display == 'block')
-			       e.style.display = 'none';
-			     else
-			       e.style.display = 'block';
-			    }
 				
 			  // Converts time to readable format
 			  // Accepts date from dp.onEventClick()
@@ -242,6 +255,10 @@
 					
 					if (min == 0)
 						min = "00";
+					
+					if (min >= 1 && min <=9)
+						min = "0"+min;
+					
 					var converted_time = hour + ":" + min + " " + period;
 					return converted_time;
 			 }
@@ -266,7 +283,7 @@
 				<div class="popupBoxContent" id="event_content">
 					<h1 id="popup_header"></h1>
 						<div id="date_div"></div>
-					<p><a href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</p>
+					<p><button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</p>
 				</div>
 			</div>
 		</div>
