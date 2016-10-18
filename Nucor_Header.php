@@ -1,11 +1,11 @@
 <!-- header file -->
 <div class = "header">
 <div id ="banner">
-	<img class="banner1" src="Banner.jpg" alt="logo">
+<!-- 	<img class="banner1" src="nucorshoeheader-photofinal.png" alt="logo"> -->
 </div>
 
     <div id="topHeaderRow" >
-        <nav class ="navbar navbar-inverse navbar-static">
+        <nav class ="navbar navbar-default navbar-inverse navbar-fixed-top">
 	        
 	        <div class = "container-fluid">
 <!-- 		        Logo -->
@@ -25,10 +25,13 @@
                 <li><a href="Nucor_Relay_Teams.php">RELAY TEAMS</a></li>
                 <li><a href="Nucor_Leader_Board.php">LEADER BOARD</a></li>
                 <li><a href="Nucor_Events.php">EVENTS</a></li>  
+                <li><a href="Nucor_Photos.php">PHOTO GALLERY</a></li> 
                 <li><a href="Nucor_Forum.php">FORUM</a></li> 
-                <li><a href="Nucor_Photos.php">PHOTO GALLERY</a></li>                  
+                                 
             </ul>
 
 	        </div>
 	        </div>
         </nav>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 /* Main CSS */
 h1, h2, h3, nav, footer {
- font-family: Georgia, Cambria, "Times New Roman", serif;
+ font-family: Arial, Georgia, Cambria, "Times New Roman", serif;
 }
 
 body {
@@ -14,7 +14,8 @@ body {
 #header {
 		
         float:left;
-		padding:15px 0;
+		padding:15px;
+		padding-bottom: 50px;
 		min-width:100%;
 	}
 
@@ -37,7 +38,7 @@ ul {
 /*Change text color(active)/size here*/
 
  .navbar-inverse .navbar-nav > li {
-   color: white; 
+   color:#02501e;
    font-size: large;
     }
  
@@ -48,10 +49,23 @@ ul {
   
 /* Change background color here (not done yet) */
 .navbar-default{
-    background-color: #5c2c9b;
-    border-color: #030033;
+    background-color: #1f1b1b;
+    border-color: #47007b;
+    border-width: medium;
+    color:#02501e; 
+    
+    
 }
 
+/*changes color of nucor home link*/
+.navbar-default .navbar-brand {
+	color: #0e4813;
+}
+
+/* changes font color of links on navbar */
+.navbar-default .navbar-right >li >a{
+    color: #0e4813;
+}
 
 
 /* removes rounded edges on navbar */

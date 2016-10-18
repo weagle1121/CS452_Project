@@ -25,6 +25,13 @@
 	-o-background-size: cover;
 	background-size:cover;
 	}
+	
+	h1 {
+		padding-top: 20%;
+		text-align: center;
+		color: black;
+		font-weight: bolder;
+	}
 	</style>
 <?php include 'Nucor_Header.php';?>
 </head>
