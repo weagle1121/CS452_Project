@@ -52,7 +52,7 @@ Steps:
 6. To change CSS element use ids:
 		announcement div wrapper - A1
 		header - h3 
-		text - SUB_A1
+		text - sub_A1
 */
 echo '<div class="container" id ="A1">';
  if ( $row_count > 0)
