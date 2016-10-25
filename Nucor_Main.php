@@ -20,7 +20,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Leaderboard_BkGr.png);
+	background-image: URL(Main_BkGr.png);
 	background-repeat: no-repeat;
 	background-position: center center fixed;
 	-webkit-background-size: cover;
