@@ -63,7 +63,7 @@
 	<script>
 		var id = 1;
 		$(document).ready(function(){
-			$.post("calendar_lib/backend_boards.php", 
+			$.post("backend/backend_boards.php", 
                     {
                         id:id
                     }, 
