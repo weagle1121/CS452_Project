@@ -101,7 +101,7 @@
 		   
 		*/
 		$(document).ready(function(){
-			$.post("calendar_lib/backend_main.php", 
+			$.post("backend/backend_main.php", 
                     {
 					// variable_name:data
 						start:firstday,
