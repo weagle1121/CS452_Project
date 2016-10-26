@@ -43,15 +43,31 @@
 </head>
 
 <body>
- <div class="dropdown">
-  <button class="dropbtn">More Albums</button>
-  <div class="dropdown-content">
-    <img class="banner2" src="drop_menu/Pictures_Black.png" alt="logo">
-	</br>
-	<img class="banner2" src="drop_menu/Pictures_Black.png" alt="logo">
-	</br>
-	<img class="banner2" src="drop_menu/Pictures_Black.png" alt="logo">
-  </div>
+<script>
+		var year = 2016;
+		$(document).ready(function(){
+			$.post("backend/backend_photos.php", 
+                    {
+					// variable_name:data
+						year:year
+                    }, 
+                    function(data) {
+						// returned data from php goes into the specified div
+						document.getElementById("slide_show").innerHTML = data;
+                    });
+		});
+</script>
+
+ <div style="margin-left: 12%; padding-top: 10%; padding-right: 2%; color:#ffffff">
+                <div class="space">
+                    Select Event: <select id="theme">
+                        <!-- value will be changed later! -->
+						<option value="calendar_default">Fun Run</option>
+                        <option value="calendar_white">Super Short 10K</option>                        
+                        <option value="calendar_g">Zombie Sprint</option>                        
+                        <option value="calendar_green">Green Skin Awareness</option>                        
+                    </select>
+                </div>
 </div>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -64,39 +80,8 @@
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="drop_menu/Chrysanthemum.jpg" alt="Chrysanthemum">
-      <div class="carousel-caption">
-        <h3>Chrysanthemum</h3>
-        <p>Sample_Quote.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="drop_menu/Desert.jpg" alt="Desert">
-      <div class="carousel-caption">
-        <h3>Desert</h3>
-        <p>Sample_Quote.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="drop_menu/Hydrangeas.jpg" alt="Hydrangeas">
-      <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Sample_Quote.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="drop_menu/Tulips.jpg" alt="Tulips">
-      <div class="carousel-caption">
-        <h3>Toulips</h3>
-        <p>Sample_Quote.</p>
-      </div>
-    </div>
-  </div>
+  <!-- Data is sent from backend_photos.php here -->
+  <div class="carousel-inner" role="listbox" id = "slide_show"></div>
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
