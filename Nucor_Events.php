@@ -3,12 +3,12 @@
 <head>
     <title>Nucor Events</title>
 	<!-- demo stylesheet -->
-    	<link type="text/css" rel="stylesheet" href="media/layout.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_g.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_green.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_white.css" />    
+    	<link type="text/css" rel="stylesheet" href="backend/media/layout.css" />    
+        <link type="text/css" rel="stylesheet" href="backend/themes/calendar_g.css" />    
+        <link type="text/css" rel="stylesheet" href="backend/themes/calendar_green.css" />    
+        <link type="text/css" rel="stylesheet" href="backend/themes/calendar_traditional.css" />    
+        <link type="text/css" rel="stylesheet" href="backend/themes/calendar_transparent.css" />    
+        <link type="text/css" rel="stylesheet" href="backend/themes/calendar_white.css" />    
 		
 	<!-- Formatting -->
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -18,9 +18,9 @@
 		<link href="Nucor_Main_Page.css" rel="stylesheet">
 
 	<!-- helper libraries -->
-		<script src="calendar_lib/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="backend/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<!-- daypilot libraries -->
-		<script src="calendar_lib/js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
+		<script src="backend/js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
 	<!-- Header for the page -->	
 	<style type="text/css">
 
@@ -107,7 +107,7 @@
                 dp.viewType = "Week";
 
                 dp.onEventMoved = function (args) {
-                    $.post("calendar_lib/backend_move.php", 
+                    $.post("backend/backend_move.php", 
                             {
                                 id: args.e.id(),
                                 newStart: args.newStart.toString(),
@@ -119,7 +119,7 @@
                 };
 
                 dp.onEventResized = function (args) {
-                    $.post("calendar_lib/backend_resize.php", 
+                    $.post("backend/backend_resize.php", 
                             {
                                 id: args.e.id(),
                                 newStart: args.newStart.toString(),
@@ -144,7 +144,7 @@
                     });
                     dp.events.add(e);
 
-                    $.post("calendar_lib/backend_create.php", 
+                    $.post("backend/backend_create.php", 
                             {
                                 start: args.start.toString(),
                                 end: args.end.toString(),
@@ -176,7 +176,7 @@
 					var Eday = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
 					var Etime = convert_hour(date.getHours(),date.getMinutes());
 					
-					$.post("calendar_lib/backend_details.php", 
+					$.post("backend/backend_details.php", 
                     {
                         id:id
                     }, 
@@ -224,7 +224,7 @@
                     var start = dp.visibleStart();
                     var end = dp.visibleEnd();
 
-                    $.post("calendar_lib/backend_events.php", 
+                    $.post("backend/backend_events.php", 
                     {
                         start: start.toString(),
                         end: end.toString()
