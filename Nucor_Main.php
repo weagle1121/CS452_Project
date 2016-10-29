@@ -11,9 +11,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
-    <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this page -->
-    <link href="Nucor_Main_Page.css" rel="stylesheet">
+    <link href="nucor_main_page.css" rel="stylesheet">
 	
 	<style type="text/css">
 
