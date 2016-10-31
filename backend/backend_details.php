@@ -1,4 +1,3 @@
-
 <?php
 /*  
 PHP file is sent an id variable from the 
@@ -14,6 +13,6 @@ $stmt = $db->prepare($insert);
 $stmt->bindParam(':id', $_POST['id']);
 $stmt->execute();
 $row = $stmt -> fetch();
-echo $row['details']
-
+echo $row['details'];
+$db = null;
 ?>

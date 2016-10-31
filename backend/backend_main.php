@@ -71,7 +71,7 @@ echo '<div class="container" id ="A1">';
 				}
  }
  else
-	echo '<h2>We are experiencing technical difficulties, please check back later</h2>';
+	echo '<h2>There are no current anouncements.</h2>';
 echo '</div>';
 
 
@@ -117,7 +117,7 @@ echo'<div class="container" id = "event_div">';
 				}
   }  
  else  
-       echo '<h2>We are experiencing technical difficulties, please check back later</h2>';
+       echo '<h2>There are no events scheduled today!</h2>';
 echo '</div>';
-    
+$db = null;
  ?> 

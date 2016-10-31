@@ -1,12 +1,4 @@
 <?php
-
-  $DBhost = "localhost";
-  $DBuser = "root";
-  $DBpass = "";
-  $DBname = "nucor";
-  
-  $DBcon = new MySQLi($DBhost,$DBuser,$DBpass,$DBname);
-    
-     if ($DBcon->connect_errno) {
-         die("ERROR : -> ".$DBcon->connect_error);
-     }
+$db = new PDO('mysql:host=localhost;dbname=nucor;charset=utf8', 'root', '');
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+?>

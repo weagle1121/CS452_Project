@@ -46,3 +46,5 @@ $counter = 1;
 				</div>
 		</div>';
 }
+$db->close();
+?>

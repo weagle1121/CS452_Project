@@ -3,32 +3,30 @@ session_start();
 require_once 'dbconnect.php';
 
 if (isset($_SESSION['userSession'])!="") {
- header("Location: home.php");
+ header("Location: teams.php");
  exit;
 }
 
 if (isset($_POST['btn-login'])) {
- 
+//Sanitize user input 
  $email = strip_tags($_POST['email']);
  $password = strip_tags($_POST['password']);
- 
- $email = $DBcon->real_escape_string($email);
- $password = $DBcon->real_escape_string($password);
- 
- $query = $DBcon->query("SELECT user_id, email, password FROM admins WHERE email='$email'");
- $row=$query->fetch_array();
- 
- $count = $query->num_rows; // if email/password are correct returns must be 1 row
- 
+//Prepare and execute DB Lookup
+$stmt = $db->prepare('SELECT user_id, email, password FROM admins WHERE email=?');
+$stmt->bindValue(1, $email, PDO::PARAM_STR);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$count = $stmt->rowCount();
+//Results are in $row and $count
  if (password_verify($password, $row['password']) && $count==1) {
   $_SESSION['userSession'] = $row['user_id'];
-  header("Location: home.php");
+  header("Location: teams.php");
  } else {
   $msg = "<div class='alert alert-danger'>
      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Invalid Username or Password !
     </div>";
  }
- $DBcon->close();
+ $db = null;
 }
 ?>
 <!DOCTYPE html>

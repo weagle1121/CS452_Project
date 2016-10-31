@@ -1,30 +1,29 @@
 <?php
 session_start();
 if (isset($_SESSION['userSession'])!="") {
- header("Location: home.php");
+ header("Location: teams.php");
 }
 require_once 'dbconnect.php';
-
 if(isset($_POST['btn-signup'])) {
  
  $uname = strip_tags($_POST['username']);
  $email = strip_tags($_POST['email']);
  $upass = strip_tags($_POST['password']);
  
- $uname = $DBcon->real_escape_string($uname);
- $email = $DBcon->real_escape_string($email);
- $upass = $DBcon->real_escape_string($upass);
+// $uname = $db->real_escape_string($uname);
+// $email = $db->real_escape_string($email);
+// $upass = $db->real_escape_string($upass);
  
  $hashed_password = password_hash($upass, PASSWORD_DEFAULT); // this function works only in PHP 5.5 or latest version
  
- $check_email = $DBcon->query("SELECT email FROM admins WHERE email='$email'");
- $count=$check_email->num_rows;
+ $check_email = $db->query("SELECT email FROM admins WHERE email='$email'");
+ $count=$check_email->rowCount();
  
  if ($count==0) {
   
   $query = "INSERT INTO admins(username,email,password) VALUES('$uname','$email','$hashed_password')";
 
-  if ($DBcon->query($query)) {
+  if ($db->query($query)) {
    $msg = "<div class='alert alert-success'>
       <span class='glyphicon glyphicon-info-sign'></span> &nbsp; successfully registered !
      </div>";
@@ -43,8 +42,8 @@ if(isset($_POST['btn-signup'])) {
    
  }
  
- $DBcon->close();
 }
+$db = null;
 ?>
 <!DOCTYPE html>
 <html>

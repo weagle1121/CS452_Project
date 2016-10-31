@@ -19,5 +19,5 @@ $response->message = 'Update successful';
 
 header('Content-Type: application/json');
 echo json_encode($response);
-
+$db = null;
 ?>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--Shannon LaMar   
   9/2/1016
-  Nucor RFL RELAY TEAMS->
+  Nucor RFL RELAY TEAMS-->
 <html>
 <head lang="en">
    <meta charset="utf-8">

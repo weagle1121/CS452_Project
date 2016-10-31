@@ -27,7 +27,7 @@ $column = $stmt -> fetch();
 		$stmt = $db->prepare('SELECT * FROM `TEAMS` WHERE NOT STATUS = 0 ORDER BY TNAME');
 	
 	if ($PAGE_ID == 2)
-		$stmt = $db->prepare('SELECT * FROM `LEADERBOARD` WHERE NOT STATUS = 0 ORDER BY RANK');
+		$stmt = $db->prepare('SELECT * FROM `TEAMS` WHERE NOT STATUS = 0 ORDER BY TRAISED DESC');
 
 	$stmt->execute();
 	$row_count = $stmt->rowCount();
@@ -43,25 +43,34 @@ $column = $stmt -> fetch();
 				{  
 					echo ' 
 					<tr>  
-						<td>'.$row["TNAME"].'</td>  
-						<td>'.$row["TCAPTAIN"].'</td>  
-						<td>'.$row["TPHONE"].'</td>
-						<td>'.$row["TEMAIL"].'</td>  					 
+						<td><a href="'.$row["TURL"].'">'.$row["TNAME"].'</a></td>';
+						$divisionNameQuery = "SELECT DNAME FROM DIVISIONS WHERE DID = :tdiv LIMIT 1";
+						$divisionNameSTMT = $db->prepare($divisionNameQuery);
+						$params = array( 'tdiv' => $row["TDIVISION"] );
+						$divisionNameSTMT->execute($params);
+						$divisionNameRow = $divisionNameSTMT->fetch();
+						$divisionName = $divisionNameRow["DNAME"];
+						echo '
+						<td>'.$divisionName.'</td>
+						<td>'.$row["TYEAR"].'</td>
+						<td>'.$row["TRAISED"].'</td>
 					</tr>';  
 				}
 	}
 
 	if($PAGE_ID == 2)
 	 {
+		 $rankposition=1;
 		 foreach($result as $row)  
 			{  
 				echo ' 
 				<tr>  
-                     <td>'.$row["RANK"].'</td>  
-                     <td>'.$row["TEAM_NAME"].'</td>  
-                     <td>'.$row["MONEY_RAISED"].'</td>  
+                     <td>'.$rankposition.'</td>  
+                     <td>'.$row["TNAME"].'</td>  
+                     <td>'.$row["TRAISED"].'</td>  
                 </tr>  
-				';  
+				';
+				$rankposition++;
 			} 
 	 }
 	 
@@ -72,5 +81,5 @@ $column = $stmt -> fetch();
  }  
 echo '</tbody>';    
 
- 
- ?> 
+$db = null;
+?> 
