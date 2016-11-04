@@ -1,4 +1,5 @@
 <?php
+//some comment
 session_start();
 if (isset($_SESSION['userSession'])!="") {
  header("Location: teams.php");
