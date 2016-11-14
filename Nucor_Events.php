@@ -28,7 +28,7 @@
 
 		body {
 		background-image: URL(Events_BkGr.png);
-		background-repeat: no-repeat;
+/* 		background-repeat: no-repeat; */
 		background-position: center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;

@@ -17,8 +17,8 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Forum_BkGr.png);
-	background-repeat: no-repeat;
+	background-image: URL(Forum.jpg);
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -26,6 +26,16 @@
 	background-size:cover;
 	}
 	
+	/* 	creates blurred affect */
+	#box {
+		background: url(Forum_Blurred.png) no-repeat fixed;
+		width: 75%; 
+		margin: 40px auto;
+		margin-top: 15%;
+	    min-height: 400px;
+		-moz-border-radius: 30px; -webkit-border-radius: 30px;
+	}
+
 	h1 {
 		padding-top: 20%;
 		text-align: center;
@@ -40,6 +50,8 @@
 <!-- 	Bootstrap core JavaScript -->
     <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
     <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>    
+    <div id = "box">
 	<h1>Feature not yet in development</h1>
+    </div>
 </body>
 </html>

@@ -17,7 +17,7 @@
 
 	body {
 	background-image: URL(Team_Listing_BkGr.png);
-	background-repeat: no-repeat;
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -41,7 +41,7 @@
 	    min-height: 400px;
 		-moz-border-radius: 30px; -webkit-border-radius: 30px;
 	}
-
+		
 	
 	</style>
 
@@ -53,8 +53,14 @@
 
 <div class="container">
   <h2>RELAY TEAMS</h2>
-  <table class="table table-bordered table-striped" id ="t1" >
+  <div id = "corners">
+<!-- 	  this div a horizontal scroll bar if the screen is too small to display the full content -->
+<!--   <div class="table-responsive"> -->
+<div style="overflow-x:auto;">
+  <table class="table table-striped" id ="t1" style = "-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;">
   </table>
+	  </div>
+</div>
 </div>		
 	
 <!-- 	Bootstrap core JavaScript -->

@@ -10,14 +10,14 @@
 	<script src="Bootstrap/bootstrap-3.0.0/js/carousel.js"></script>
 <!-- Redundant <script src="bootstrap/js/bootstrap.min.js"></script> -->
 <!-- CSS is not a script! <script src="bootstrap/css/bootstrap.min.css"></script> -->
-	<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- 	<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 	<style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
 	background-image: URL(Photo_BkGr.png);
-	background-repeat: no-repeat;
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
