@@ -46,5 +46,9 @@ $counter = 1;
 				</div>
 		</div>';
 }
+$db = null;
+/*
+line 51 causes error
 $db->close();
+*/
 ?>

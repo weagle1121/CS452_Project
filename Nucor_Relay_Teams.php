@@ -16,7 +16,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Team_Listing_BkGr.png);
+	background-image: URL(Pictures/Team_Listing_BkGr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
@@ -26,15 +26,17 @@
 	}
 	
 /* 	changes color/font of headline */
+/*
 	h2{
 		text-align: center;
 		font-size: 40px;
 		color:#02501e;
 		font-weight: bold;
 	}
+*/
 	/* 	creates blurred affect */
 	.container {
-		background: url(Team_Listing_Blurred.png) no-repeat fixed;
+		background: url(Pictures/Team_Listing_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -57,7 +59,7 @@
 <!-- 	  this div a horizontal scroll bar if the screen is too small to display the full content -->
 <!--   <div class="table-responsive"> -->
 <div style="overflow-x:auto;">
-  <table class="table table-striped" id ="t1" style = "-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;">
+  <table class="table table-striped" id ="t1">
   </table>
 	  </div>
 </div>

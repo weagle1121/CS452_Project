@@ -16,7 +16,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Photo_BkGr.png);
+	background-image: URL(Pictures/Photo_BkGr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;

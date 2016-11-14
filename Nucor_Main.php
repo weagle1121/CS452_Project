@@ -15,7 +15,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Main_BkGr.png);
+	background-image: URL(Pictures/Main_BkGr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
@@ -46,7 +46,7 @@
 	/* 	creates blurred affect */
 
 	.container {
-		background: url(Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(Pictures/Leaderboard_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;

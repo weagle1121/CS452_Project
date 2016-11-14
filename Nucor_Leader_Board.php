@@ -16,7 +16,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Leaderboard_BkGr.png);
+	background-image: URL(Pictures/Leaderboard_BkGr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	background-attachment: fixed;
@@ -26,15 +26,17 @@
 	background-size: cover;
 	}
 	/* 	changes color/font of headline */
+/*
 	h2{
 		text-align: center;
 		font-size: 40px;
 		color:#02501e;
 		font-weight: bold;
 	}
+*/
 	/* 	creates blurred affect */
 	.container {
-		background: url(Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(Pictures/Leaderboard_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -46,34 +48,8 @@
 	
 
 
-.table-bordered
-{
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-
-    border-collapse: inherit;
-}
-/*
-	.table {
-		
-		-webkit-border-radius: 20px;
-		-moz-border-radius: 20px;
-		border-top-right-radius: 10em;
-		  border-top-left-radius: 10em;
-		  border-bottom-right-radius: 5em;
-		  border-bottom-left-radius: 2em;
-		padding: 10%;
-		width: 100%;
-		height: 50%;
-	}
-*/
-
-
 		
 		
-	
-	
 	</style>
 <?php include 'Nucor_Header.php';?>
 </head>

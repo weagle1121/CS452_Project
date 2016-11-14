@@ -17,7 +17,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Forum.jpg);
+	background-image: URL(Pictures/Forum_BkGr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	-webkit-background-size: cover;
@@ -28,7 +28,7 @@
 	
 	/* 	creates blurred affect */
 	#box {
-		background: url(Forum_Blurred.png) no-repeat fixed;
+		background: url(Pictures/Forum_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;

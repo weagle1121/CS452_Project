@@ -27,7 +27,7 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 		body {
-		background-image: URL(Events_BkGr.png);
+		background-image: URL(Pictures/Events_BkGr.png);
 /* 		background-repeat: no-repeat; */
 		background-position: center center fixed;
 		-webkit-background-size: cover;
