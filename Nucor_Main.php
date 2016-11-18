@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-
+<!--Shannon LaMar   
+  9/2/1016
+  Andrew Jordan
+  10/24/2016
+  Nucor RFL Main-->
   <!--test-->
 <html>
 <head lang="en">
@@ -7,16 +11,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
-    <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this page -->
-    <link href="Nucor_Main_Page.css" rel="stylesheet">
-    <style type="text/css">
+    <link href="nucor_main_page.css" rel="stylesheet">
+	
+	<style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Pictures/Main_BkGr.png);
-/* 	background-repeat: no-repeat; */
+	background-image: URL(Main_BkGr.png);
+	background-repeat: no-repeat;
 	background-position: center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -46,7 +51,7 @@
 	/* 	creates blurred affect */
 
 	.container {
-		background: url(Pictures/Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(Leaderboard_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;

@@ -1,10 +1,4 @@
 <?php
-// CRITICAL 
-// Need to work on removal of quotes, it is currently not operating as expected.
-// CRITICAL
-//
-//
-
 session_start();
 include_once 'dbconnect.php';
 
@@ -75,8 +69,8 @@ if (isset($_POST['btn-add'])) {
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div id="navbar" class="navbar-collapse collapse">
-    <ul class = "nav navbar-nav navbar-left">
-      <li><a href="site.php">SITE</a></li>
+    <ul class = "nav nav-pills navbar-left">
+      <li class="active"><a href="site_users.php">SITE</a></li>
       <li><a href="teams.php">TEAMS</a></li>
       <li><a href="profile.php">MY PROFILE</a></li>
     </ul>
@@ -86,11 +80,12 @@ if (isset($_POST['btn-add'])) {
     </ul>
   </div>
   <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav nav-pills">
 	    <li><a href="site_users.php">Users</a></li>
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
-		<li><a href="site_anouncements.php">Anouncements</a></li>
+		<li><a href="site_teamrosters.php">Team Rosters</a></li>
+		<li class="active"><a href="site_anouncements.php">Anouncements</a></li>
 		<li><a href="site_events.php">Events</a></li>
 		<li><a href="site_albums.php">Albums</a></li>
 	  </ul>
@@ -99,9 +94,6 @@ if (isset($_POST['btn-add'])) {
 </nav>
 <div class="container" style="margin-top:150px;">
 <form class="form-inline" method="post" autocomplete="off">
-<div class="form-group">
-    <input type="text" class="form-control" value="AUTO" name="id" style="width:5em" readonly>
-</div>
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Anouncement Name>" name="name">
 </div>
@@ -112,44 +104,77 @@ if (isset($_POST['btn-add'])) {
     <input type="date" class="form-control" name="end">
 </div>
 <div class="form-group">
-    <input type="textarea" class="form-control" placeholder="<Anouncement Text>" name="details">
+  <select name="team_or_site">
+    <option selected value="0">Site</option>
+<?php
+$stmt = $db->prepare('SELECT TID, TNAME FROM teams');
+$stmt->execute();
+$teamlist = $stmt->fetchall(PDO::FETCH_ASSOC);
+
+		foreach($teamlist as $team)
+		{
+			echo '    <option value="'.$team['TID'].'">'.$team['TNAME'].'</option>
+';
+		}
+?>
+  </select>
 </div>
+
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
 <span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Anouncement</button>
 </div> 
+<div class="form-group">
+    <textarea class="form-control" placeholder="<Anouncement Text>" name="details" maxlength="600" rows="3" cols="132"></textarea>
+</div>
 </form>
 <hr>
 <?php
 $stmt = $db->prepare('SELECT * FROM anouncements');
 $stmt->execute();
 $result = $stmt->fetchall(PDO::FETCH_ASSOC);
-if (isset($msg)) {
-   echo $msg;
-  }
+
 		 foreach($result as $aRow)
 			{
+				if ($_POST && $aRow['id'] == $id && isset($msg)) {
+					echo $msg;
+				}
 				echo '
 <form class="form-inline" method="post">
 <div class="form-group">
-    <input type="number" class="form-control" value="'.$aRow['id'].'" name="id" style="width:5em" readonly>
+    <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" value="'.$aRow["name"].'" name="name">
+    <input type="text" class="form-control" value="'.$aRow['name'].'" name="name">
 </div>
 <div class="form-group">
-    <input type="date" class="form-control" value="'.$aRow["start"].'" name="start">
+    <input type="date" class="form-control" value="'.$aRow['start'].'" name="start">
 </div>
 <div class="form-group">
-    <input type="date" class="form-control" value="'.$aRow["end"].'" name="end">
+    <input type="date" class="form-control" value="'.$aRow['end'].'" name="end">
 </div>
 <div class="form-group">
-    <input type="textarea" class="form-control" value="'.$aRow["details"].'" name="details">
+  <select name="team_or_site">
+    <option value="0">Site</option>
+';
+		foreach($teamlist as $team)
+		{
+			echo '    <option ';
+			if ($aRow['TID'] == $team['TID']) {
+				echo 'selected ';
+			}
+			echo 'value="'.$team['TID'].'">'.$team['TNAME'].'</option>
+';
+		}
+echo '  </select>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
 </div> 
+<div class="form-group">
+    <textarea class="form-control" name="details" maxlength="600" rows="3" cols="132">'.$aRow['details'].'</textarea>
+</div>
 </form>
 <hr>';
 			}

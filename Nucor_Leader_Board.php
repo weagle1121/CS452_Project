@@ -16,40 +16,31 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Pictures/Leaderboard_BkGr.png);
-/* 	background-repeat: no-repeat; */
+	background-image: URL(Leaderboard_BkGr.png);
+	background-repeat: no-repeat;
 	background-position: center center fixed;
-	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;
+	background-size:cover;
 	}
 	/* 	changes color/font of headline */
-/*
 	h2{
 		text-align: center;
 		font-size: 40px;
 		color:#02501e;
 		font-weight: bold;
 	}
-*/
 	/* 	creates blurred affect */
 	.container {
-		background: url(Pictures/Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(Leaderboard_Blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
 	    min-height: 400px;
-		-moz-border-radius: 30px; 
-		-webkit-border-radius: 30px;
-		-o-border-radius: 30px;
+		-moz-border-radius: 30px; -webkit-border-radius: 30px;
 	}
 	
-
-
-		
-		
 	</style>
 <?php include 'Nucor_Header.php';?>
 </head>
@@ -58,23 +49,15 @@
 	
 	
 <div class="container">
-  <h2>LEADER BOARD</h2>
-  <!-- 	  this div creates a horizontal scroll bar if the screen is too small to display the full content -->
-<!--   <div class="table-responsive"> -->
-  <div style="overflow-x:auto;">
-  <table class="table table-striped" id ="t1" >
-	      
+  <h2>LEADERBOARD</h2>
+  <table class="table table-bordered table-striped" id ="t1" >
   </table>
-  </div>
-<!--   </div> -->
 </div>	
 	
 <!-- 	Bootstrap core JavaScript -->
     <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
     <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>   
-    <div class = "table"> 
 	<script>
-		
 		var id = 2;
 		$(document).ready(function(){
 			$.post("backend/backend_boards.php", 
@@ -86,6 +69,5 @@
                     });
 		});
 	</script> 
-    </div>
 </body>
 </html>

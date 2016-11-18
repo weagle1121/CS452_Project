@@ -1,5 +1,6 @@
 <?php
 session_start();
+//Need to include code to set expiration time, currently a session is set up at infinite length, this is not good.
 require_once 'dbconnect.php';
 
 if (isset($_SESSION['userSession'])!="") {

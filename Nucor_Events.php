@@ -27,8 +27,8 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 		body {
-		background-image: URL(Pictures/Events_BkGr.png);
-/* 		background-repeat: no-repeat; */
+		background-image: URL(Events_BkGr.png);
+		background-repeat: no-repeat;
 		background-position: center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -55,46 +55,35 @@
 */
 
 		
-	</style>
-		<?php include 'Nucor_Header.php';?>
-		
-	
+</style>
+
 </head>
 <body>
-       
-        <div class="main">
-<!--             css affects spacing/location of mini calendars -->
-
-<!--
-            <div style="float: left; 
-					width: 160px; padding-top: 80px;">
--->
-
-
-                <div id="nav"></div>
-            </div>
-<!--             css affects spacing/location of large calendar -->
-            <div style="margin-left: 12%; padding-top: 10%; padding-right: 2%;">
-                
-                <div class="space">
-                    Theme: <select id="theme">
-                        <option value="calendar_default">Default</option>
-                        <option value="calendar_white">White</option>                        
-                        <option value="calendar_g">Google-Like</option>                        
-                        <option value="calendar_green">Green</option>                        
-                        <option value="calendar_traditional">Traditional</option>                        
-                        <option value="calendar_transparent">Transparent</option>                        
-                    </select>
-                </div>
-                
-                <div id="dp"></div>
-            </div>
-
+<?php include 'Nucor_Header.php';?>
+<div>
+  <div id="nav" style="float:left; width: 150px;">
+    <!--mini nav calendar lives here-->
+  </div>
+  <div id="dp" style="margin-left: 150px; margin-top: 60px;">
+  <!--Calendar body (week display) lives here-->
+  </div>
+</div>
+  <div id="event_pop_up">
+    <div class="popupBoxWrapper">
+      <div class="popupBoxContent" id="event_content">
+        <h1 id="popup_header"></h1>
+        <div id="date_div"></div>
+          <p>
+		    <button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event
+          </p>
+        </div>
+      </div>
+    </div>
+</body>
             <script type="text/javascript">
-                
 			   var nav = new DayPilot.Navigator("nav");
                 nav.showMonths = 3;
-                nav.skipMonths = 3;
+                nav.skipMonths = 1;
                 nav.selectMode = "week";
                 nav.onTimeRangeSelected = function(args) {
                     dp.startDate = args.day;
@@ -105,8 +94,10 @@
                 
                 var dp = new DayPilot.Calendar("dp");
                 dp.viewType = "Week";
-
-                dp.onEventMoved = function (args) {
+				dp.eventClickHandling = "Disabled";
+				dp.eventMoveHandling = "Disabled";
+				dp.eventResizeHandling = "Disabled";
+                /*dp.onEventMoved = function (args) {
                     $.post("backend/backend_move.php", 
                             {
                                 id: args.e.id(),
@@ -116,9 +107,28 @@
                             function() {
                                 console.log("Moved.");
                             });
-                };
+                };*/
+				dp.init();
+                loadEvents();
 
-                dp.onEventResized = function (args) {
+/*				    dp.bubble = new DayPilot.Bubble({
+        cssOnly: true,
+        cssClassPrefix: "bubble_default",
+        onLoad: function(args) {
+            var ev = args.source;
+            args.async = true;  // notify manually using .loaded()
+            
+            // simulating slow server-side load
+            setTimeout(function() {
+                args.html = "testing bubble for: <br>" + ev.text();
+                args.loaded();
+            }, 500);
+        }
+    });*/
+				
+				
+                /*
+				dp.onEventResized = function (args) {
                     $.post("backend/backend_resize.php", 
                             {
                                 id: args.e.id(),
@@ -162,7 +172,7 @@
 			   // Toggles the CSS of event_pop_up on or off
 			   // Sources used : http://www.w3schools.com/js/js_htmldom_html.asp
 			   //		   : https://css-tricks.com/snippets/javascript/showhide-element/
-			   
+			   */
 				dp.onEventClick = function(args) {
      
 					var divID = "event_pop_up";
@@ -216,9 +226,7 @@
 				
 				
                 
-				dp.init();
 
-                loadEvents();
 
                 function loadEvents() {
                     var start = dp.visibleStart();
@@ -262,33 +270,12 @@
 					var converted_time = hour + ":" + min + " " + period;
 					return converted_time;
 			 }
-				
-            </script>
-            
-            <script type="text/javascript">
-            $(document).ready(function() {
+			/*
+			 $(document).ready(function() {
                 $("#theme").change(function(e) {
                     dp.theme = this.value;
                     dp.update();
                 });
-            });  
+            });*/ //This will not be in the final version
             </script>
-
-<!--         </div> -->
-        <div class="clear">
-        </div>
-        
-		<div id="event_pop_up">
-			<div class="popupBoxWrapper">
-				<div class="popupBoxContent" id="event_content">
-					<h1 id="popup_header"></h1>
-						<div id="date_div"></div>
-					<p><button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</p>
-				</div>
-			</div>
-		</div>
-		
-		</body>
-
 </html>
-

@@ -87,7 +87,7 @@ ul {
 		}
 	.popupBoxWrapper{
 		width: 350px; 
-		height:300px;
+		height: 80%;
 		overflow: auto;
 		margin: 150px auto; 
 		text-align: center;
@@ -105,19 +105,6 @@ p{
 
 }
 
-/* 	changes color/font of headline */
-	h2{
-		text-align: center;
-		font-size: 40px;
-		color:#02501e;
-		font-weight: bold;
-	}
-
-/* CSS for tables on leaderboard and relay listing pages */
-#t1{
-		color: black;
-		font-weight: bolder;
-	}
 /* Unused code */
 
 /*Create a horizontal list*/
