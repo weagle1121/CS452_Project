@@ -107,11 +107,6 @@ if (isset($_POST['btn-add'])) {
   </div>
 </nav>
 <div class="container" style="margin-top:150px;">
-<?php
-echo 'br';
-var_dump($_POST);
-echo '<br>';
-?>
 <form class="form-inline" method="post" autocomplete="off">
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Team Name>" name="tname">
