@@ -16,12 +16,12 @@ echo '
     <input type="tel" class="form-control" placeholder="<Phone>" name="phone">
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" name="active" checked>
 	</label>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Captain?
 	<input type="checkbox" name="captain">
 	</label>
 </div>
@@ -140,6 +140,7 @@ if (isset($_POST['btn-add'])) {
   <div class="navbar-collapse collapse">
       <ul class="nav nav-pills">
 	    <li><a href="site_users.php">Users</a></li>
+		<li><a href="site_adminteamassign.php">Admins/Teams</a></li>
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li class="active"><a href="site_teamrosters.php">Team Rosters</a></li>

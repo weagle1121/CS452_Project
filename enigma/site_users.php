@@ -110,6 +110,7 @@ if (isset($_POST['btn-add'])) {
   <div class="navbar-collapse collapse">
       <ul class="nav nav-pills">
 	    <li class="active"><a href="site_users.php">Users</a></li>
+		<li><a href="site_adminteamassign.php">Admins/Teams</a></li>
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
@@ -133,12 +134,12 @@ if (isset($_POST['btn-add'])) {
     <input type="email" class="form-control" placeholder="<Email>" name="email" onfocus="this.removeAttribute('readonly');" readonly>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" name="active" checked>
 	</label>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Site Admin?
     <input type="checkbox" name="site_admin">
 	</label>
 </div>
@@ -147,7 +148,7 @@ if (isset($_POST['btn-add'])) {
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create User</button>
+<span class="glyphicon glyphicon-plus"></span> Create User</button>
 </div> 
 </form>
 <hr>
@@ -192,7 +193,7 @@ if (isset($msg)) {
 <!--Need to add mechanism here for updating passwords, perhaps also including a mechanism to pre-expire them.-->
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
+<span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
 </form>
 <hr>';

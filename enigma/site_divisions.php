@@ -68,6 +68,7 @@ if (isset($_POST['btn-add'])) {
   <div class="navbar-collapse collapse">
       <ul class="nav nav-pills">
 	    <li><a href="site_users.php">Users</a></li>
+		<li><a href="site_adminteamassign.php">Admins/Teams</a></li>
 		<li class="active"><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>

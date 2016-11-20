@@ -82,6 +82,7 @@ if (isset($_POST['btn-add'])) {
   <div class="navbar-collapse collapse">
       <ul class="nav nav-pills">
 	    <li><a href="site_users.php">Users</a></li>
+		<li><a href="site_adminteamassign.php">Admins/Teams</a></li>
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
@@ -104,7 +105,7 @@ if (isset($_POST['btn-add'])) {
     <input type="date" class="form-control" name="end">
 </div>
 <div class="form-group">
-  <select name="team_or_site">
+  <select class="form-control" name="team_or_site">
     <option selected value="0">Site</option>
 <?php
 $stmt = $db->prepare('SELECT TID, TNAME FROM teams');
@@ -154,7 +155,7 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
     <input type="date" class="form-control" value="'.$aRow['end'].'" name="end">
 </div>
 <div class="form-group">
-  <select name="team_or_site">
+  <select class="form-control" name="team_or_site">
     <option value="0">Site</option>
 ';
 		foreach($teamlist as $team)

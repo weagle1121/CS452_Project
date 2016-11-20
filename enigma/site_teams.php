@@ -95,6 +95,7 @@ if (isset($_POST['btn-add'])) {
   <div class="navbar-collapse collapse">
       <ul class="nav nav-pills">
 	    <li><a href="site_users.php">Users</a></li>
+		<li><a href="site_adminteamassign.php">Admins/Teams</a></li>
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li class="active"><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
@@ -106,13 +107,30 @@ if (isset($_POST['btn-add'])) {
   </div>
 </nav>
 <div class="container" style="margin-top:150px;">
+<?php
+echo 'br';
+var_dump($_POST);
+echo '<br>';
+?>
 <form class="form-inline" method="post" autocomplete="off">
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Team Name>" name="tname">
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="<Division#>" name="tdivision">
-	<!--Replace the preceding code so that a drop-box showing division names is displayed and selectable-->
+  <select class="form-control" name="did">
+    <option selected value="0">Select Division</option>
+<?php
+$stmt = $db->prepare('SELECT DID, DNAME FROM divisions');
+$stmt->execute();
+$divisionList = $stmt->fetchall(PDO::FETCH_ASSOC);
+
+		foreach($divisionList as $division)
+		{
+			echo '    <option value="'.$division['DID'].'">'.$division['DNAME'].'</option>
+';
+		}
+?>
+  </select>
 </div>
 <div class="form-group">
     <input type="number" class="form-control" placeholder="<Year>" name="tyear" style="width:7em" min="1940" max="2100">
@@ -125,7 +143,7 @@ if (isset($_POST['btn-add'])) {
 </div>
 <!-- Add team admins!? -->
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" name="status" checked>
 	</label>
 </div>
@@ -153,7 +171,17 @@ if (isset($msg)) {
     <input type="text" class="form-control" value="'.$teamRow["TNAME"].'" name="tname">
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" value="'.$teamRow["TDIVISION"].'" name="tdivision">
+  <select class="form-control" name="tdivision">
+';
+	foreach($divisionList as $division) {
+		echo '    <option ';
+		if ($teamRow['TDIVISION'] == $division['DID']) {
+			echo 'selected ';
+		}
+		echo 'value="'.$division['DID'].'">'.$division['DNAME'].'</option>
+';
+	}
+echo '  </select>
 </div>
 <div class="form-group">
     <input type="number" class="form-control" value="'.$teamRow["TYEAR"].'" name="tyear" min="1940" max="2100">
