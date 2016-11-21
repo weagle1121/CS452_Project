@@ -17,7 +17,6 @@ if (isset($_POST['btn-update'])) {
  //Consider email validation here with (filter_var($email, FILTER_VALIDATE_EMAIL)) RETURNS BOOL
  //Definitely convert this into a function
  $user_id = strip_tags($_POST['user_id']);
- $username = strip_tags($_POST['username']);
  $name = strip_tags($_POST['name']);
  $email = strip_tags($_POST['email']);
  //We've got almost all the data from the post stripped- need to make active and site_admin usable
@@ -31,9 +30,30 @@ if (isset($_POST['btn-update'])) {
  else
  { $site_admin=FALSE; }
 
+ if (isset($_POST['thesauce']) || isset($_POST['secsauce'])) {
+	if ($_POST['thesauce'] == $_POST['secsauce'])
+	{
+		$hashed_password = password_hash($_POST['thesauce'], PASSWORD_DEFAULT);
+		$query = $db->prepare('UPDATE admins SET name = :name, email = :email, active = :active, site_admin = :site_admin, password = :hashed_password WHERE admins.user_id = :user_id');
+		$query->bindValue(':name', $name, PDO::PARAM_STR);
+		$query->bindValue(':email', $email, PDO::PARAM_STR);
+		$query->bindValue(':active', $active, PDO::PARAM_INT);
+		$query->bindValue(':site_admin', $site_admin, PDO::PARAM_INT);
+		$query->bindValue(':hashed_password', $hashed_password, PDO::PARAM_STR);
+		$query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+		$query->execute();
+	}
+	else
+	{
+		$msg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Passwords do not match!
+     </div>';
+	}
+}
+else
+{
   //THIS IS THE RIGHT WAY! IT HANDLES ' and " properly!!
-  $query = $db->prepare('UPDATE admins SET username = :username, name = :name, email = :email, active = :active, site_admin = :site_admin WHERE admins.user_id = :user_id');
-  $query->bindValue(':username', $username, PDO::PARAM_STR);
+  $query = $db->prepare('UPDATE admins SET name = :name, email = :email, active = :active, site_admin = :site_admin WHERE admins.user_id = :user_id');
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':email', $email, PDO::PARAM_STR);
   $query->bindValue(':active', $active, PDO::PARAM_INT);
@@ -49,10 +69,9 @@ if (isset($_POST['btn-update'])) {
       <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error while updating user information!
      </div>';
   }
-
+}
   }
 if (isset($_POST['btn-add'])) {
- $username = strip_tags($_POST['username']);
  $name = strip_tags($_POST['name']);
  $email = strip_tags($_POST['email']);
  $rawpassword = strip_tags($_POST['thesauce']);
@@ -65,8 +84,7 @@ if (isset($_POST['btn-add'])) {
  { $site_admin=TRUE; }
  else
  { $site_admin=FALSE; }
- $query = $db->prepare('INSERT INTO admins (user_id, username, name, email, password, site_admin, active) VALUES (NULL, :username, :name, :email, :hashed_password, :site_admin, :active)');
-  $query->bindValue(':username', $username, PDO::PARAM_STR);
+ $query = $db->prepare('INSERT INTO admins (user_id, name, email, password, site_admin, active) VALUES (NULL, :name, :email, :hashed_password, :site_admin, :active)');
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':email', $email, PDO::PARAM_STR);
   $query->bindValue(':hashed_password', $hashed_password, PDO::PARAM_STR);
@@ -103,7 +121,7 @@ if (isset($_POST['btn-add'])) {
       <li><a href="profile.php">MY PROFILE</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['username'];?></a></li>
+      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['email'];?></a></li>
       <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
     </ul>
   </div>
@@ -121,17 +139,18 @@ if (isset($_POST['btn-add'])) {
 	</div>
   </div>
 </nav>
-<div class="container" style="margin-top:120px;">
+<div class="container" style="margin-top:150px;">
 <form class="form-inline" method="post" autocomplete="off">
-<div class="form-group">
-    <input type="text" class="form-control" placeholder="<Username>" name="username">
-</div>
+<div class="row">
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Name>" name="name">
 </div>
 <div class="form-group">
 	<!-- The 'onfocus' hack below is to keep Chrome from trying to be too helpful with entering default credentials for this site. -->
     <input type="email" class="form-control" placeholder="<Email>" name="email" onfocus="this.removeAttribute('readonly');" readonly>
+</div>
+<div class="form-group">
+    <input type="hidden" class="form-control" value="NULL" name="user_id">
 </div>
 <div class="checkbox">
     <label class="checkbox-inline">Active?
@@ -143,15 +162,23 @@ if (isset($_POST['btn-add'])) {
     <input type="checkbox" name="site_admin">
 	</label>
 </div>
+</div>
+<div class="row">
 <div class="form-group">
-    <input type="password" class="form-control" placeholder="<Password>" name="thesauce" onfocus="this.removeAttribute('readonly');" readonly>
+    <input id="sauce1" type="password" class="form-control" placeholder="<Password>" name="thesauce" onfocus="this.removeAttribute('readonly');" readonly>
+</div>
+<div class="form-group">
+    <input id="sauce2" type="password" class="form-control" placeholder="<Confirm Password>" name="secsauce" onfocus="this.removeAttribute('readonly');" onkeyup="compareFields(document.getElementById('sauce1').value, document.getElementById('sauce2').value, document.getElementById('pwMsg'));" readonly>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
 <span class="glyphicon glyphicon-plus"></span> Create User</button>
 </div> 
+<div id="pwMsg"></div>
+</div>
 </form>
-<hr>
+
+<hr style="margin-top: 10px; margin-bottom: 10px;">
 <?php
 $stmt = $db->prepare('SELECT * FROM admins');
 $stmt->execute();
@@ -164,44 +191,64 @@ if (isset($msg)) {
 			{
 				echo '
 <form class="form-inline" method="post">
-<div class="form-group">
-    <input type="hidden" class="form-control" value="'.$adminRow["user_id"].'" name="user_id">
-</div>
-<div class="form-group">
-    <input type="text" class="form-control" value="'.$adminRow["username"].'" name="username">
-</div>
+<div class="row">
 <div class="form-group">
     <input type="text" class="form-control" value="'.$adminRow["name"].'" name="name">
 </div>
 <div class="form-group">
     <input type="email" class="form-control" value="'.$adminRow["email"].'" name="email">
 </div>
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$adminRow["user_id"].'" name="user_id">
+</div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" ';
 	if ($adminRow["active"]==TRUE) { echo 'checked '; }
 	echo 'name="active">
 	</label>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Site Admin?
     <input type="checkbox" ';
 	if ($adminRow["site_admin"]==TRUE) { echo 'checked '; }
 	echo 'name="site_admin">
 	</label>
 </div>
-<!--Need to add mechanism here for updating passwords, perhaps also including a mechanism to pre-expire them.-->
+</div>
+<div class="row">
+<div class="form-group">
+    <input id="sauce1'.$adminRow['user_id'].'" type="password" class="form-control" placeholder="<Password>" name="thesauce" onfocus="this.removeAttribute(\'readonly\');" readonly>
+</div>
+<div class="form-group">
+    <input id="sauce2'.$adminRow['user_id'].'" type="password" class="form-control" placeholder="<Confirm Password>" name="secsauce" onfocus="this.removeAttribute(\'readonly\');" onkeyup="compareFields(document.getElementById(\'sauce1'.$adminRow['user_id'].'\').value, document.getElementById(\'sauce2'.$adminRow['user_id'].'\').value, document.getElementById(\'pwMsg'.$adminRow['user_id'].'\'));" readonly>
+</div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
+<div id="pwMsg'.$adminRow['user_id'].'"></div>
+</div>
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE USER"
 ?>
 </div>
 </body>
+<script>
+function compareFields(val1, val2, msg) {
+    if (val1 == val2) {
+        msg.innerHTML = '<div class="alert alert-success">\
+  <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Passwords match!\
+</div>';
+    }
+	else msg.innerHTML = '<div class="alert alert-danger">\
+  <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Passwords do not match!\
+</div>';
+}
+
+</script>
 </html>
 <?php
 $db = null;
