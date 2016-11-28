@@ -1,4 +1,9 @@
 /* Main CSS */
+
+/*
+miscellaneous CSS
+-------------------------------
+*/
 h1, h2, h3, nav, footer {
  font-family: Arial, Georgia, Cambria, "Times New Roman", serif;
 }
@@ -10,6 +15,52 @@ body {
    padding: 0;
 }
 
+/* 	changes color/font of headlines */
+	h2{
+		text-align: center;
+		font-size: 40px;
+		color:#02501e;
+		font-weight: bold;
+	}
+	
+/* temporary paragraph formatting for about us */
+p{
+	padding-right: 20%;
+	padding-left: 20%;
+
+}
+
+
+/* CSS for tables on leaderboard and relay listing pages */
+#t1{
+		color: black;
+		font-weight: bolder;
+	}
+
+/*
+Main Page CSS
+----------------------------
+*/
+	/* 	changes color/font of secondary headline */
+
+	h3{
+		text-align: center;
+		font-size: 30px;
+		color:#02501e;
+		font-weight: bold;
+	}
+	#sub_A1{
+		color:#ffffff;	
+	}
+	#sub_event_div{
+		color:#ffffff;
+	}
+
+
+/*
+Header CSS
+-------------------------------
+*/
 /* stretches banner across page (can add footer when that's completed)*/
 #header {
 		
@@ -47,7 +98,7 @@ ul {
  }
  
   
-/* Change background color here (not done yet) */
+/* Change background color here */
 .navbar-default{
     background-color: #1f1b1b;
     border-color: #47007b;
@@ -75,6 +126,12 @@ ul {
     border-radius: 0 !important;
 }
 
+
+/*
+General Events CSS
+-------------------------------
+*/
+
   /* Controls Pop-up box for the Calendar */
  #event_pop_up{
 		top: 0; 
@@ -98,13 +155,24 @@ ul {
 		}
 	
 
-/* temporary paragraph formatting for about us */
-p{
-	padding-right: 20%;
-	padding-left: 20%;
 
-}
+/*
+Photo CSS
+-------------------------------
+*/
 
+  /* 	affects position of more albums button*/
+  .dropdown {
+  padding-top: 4%;
+  }
+
+  /* 	affects position of slideshow */
+  .carousel-inner {
+
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-bottom: 15%;
+  }
 /* Unused code */
 
 /*Create a horizontal list*/

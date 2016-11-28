@@ -10,30 +10,25 @@
    <!-- Bootstrap core CSS -->
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this page -->
-    <link href="Nucor_Main_Page.css" rel="stylesheet">
+    <link href=" nucor_main_page.css" rel="stylesheet">
         <style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Leaderboard_BkGr.png);
-	background-repeat: no-repeat;
+	background-image: URL(pictures/leaderboard_bkgr.png);
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size:cover;
 	}
-	/* 	changes color/font of headline */
-	h2{
-		text-align: center;
-		font-size: 40px;
-		color:#02501e;
-		font-weight: bold;
-	}
+
 	/* 	creates blurred affect */
 	.container {
-		background: url(Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(pictures/leaderboard_blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -49,8 +44,8 @@
 	
 	
 <div class="container">
-  <h2>LEADERBOARD</h2>
-  <table class="table table-bordered table-striped" id ="t1" >
+  <h2>LEADER BOARD</h2>
+  <table class="table table-striped" id ="t1" >
   </table>
 </div>	
 	

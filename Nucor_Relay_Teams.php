@@ -14,24 +14,20 @@
     <style type="text/css">
 	/*background image, should work across web browsers except internet explorer*/
 	body {
-	background-image: URL(Team_Listing_BkGr.png);
+	background-image: URL(pictures/team_listing_bkgr.png);
 	background-repeat: no-repeat;
 	background-position: center center fixed;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size:cover;
+
 	}
-/* 	changes color/font of headline */
-	h2{
-		text-align: center;
-		font-size: 40px;
-		color:#02501e;
-		font-weight: bold;
-	}
+
 	/* 	creates blurred affect */
 	.container {
-		background: url(Team_Listing_Blurred.png) no-repeat fixed;
+		background: url(pictures/team_listing_blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -53,7 +49,7 @@ $stmt = $db->prepare("SELECT teams.TID, teams.TNAME, teams.TYEAR, teams.TURL, te
  if($stmt->rowCount())  
  {  
 			echo
-'  <table class="table table-bordered">
+'  <table class="table table-striped" id ="t1">
     <tbody>';
 			foreach($result as $team)  
 				{  

@@ -20,44 +20,27 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Main_BkGr.png);
-	background-repeat: no-repeat;
+	background-image: URL(pictures/main_bkGr.png);
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size:cover;
 	}
-	/* 	changes color/font of headline */
-	h2{
-		text-align: center;
-		font-size: 40px;
-		color:#02501e;
-		font-weight: bold;
-	}
-	h3{
-		text-align: center;
-		font-size: 30px;
-		color:#02501e;
-		font-weight: bold;
-	}
-	#sub_A1{
-		color:#ffffff;	
-	}
-	#sub_event_div{
-		color:#ffffff;
-	}
 
 	/* 	creates blurred affect */
 
 	.container {
-		background: url(Leaderboard_Blurred.png) no-repeat fixed;
+		background: url(pictures/leaderboard_blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
 	    min-height: 400px;
 		-moz-border-radius: 30px; -webkit-border-radius: 30px;
 	}
+
 	</style>
 	
 	<?php include 'Nucor_Header.php';?>

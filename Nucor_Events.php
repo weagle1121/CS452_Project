@@ -12,10 +12,9 @@
 		
 	<!-- Formatting -->
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>Nucor Events</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
-		<link href="Nucor_Main_Page.css" rel="stylesheet">
+		<link href="nucor_main_page.css" rel="stylesheet">
 
 	<!-- helper libraries -->
 		<script src="backend/js/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -27,44 +26,32 @@
 	/*background image, should work across web browsers except internet explorer*/
 
 		body {
-		background-image: URL(Events_BkGr.png);
-		background-repeat: no-repeat;
+		background-image: URL(pictures/events_bkgr.png);
+/* 		background-repeat: no-repeat; */
 		background-position: center center fixed;
+		background-attachment: fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size:cover;
 		
 		}
-		
 
-		.main{
-			float: left; 
-			width: 160px; 
-			padding-top: 10%;
-/* 			padding-left: 80px; */
-		}
-		
-/*
 
-		.space{
-			margin-left: 160px; 
-			padding-top: 100px; 
-			padding-right: 80px;
-		}
-*/
 
-		
-</style>
 
+	</style>
+	<?php include 'Nucor_Header.php';?>
 </head>
 <body>
-<?php include 'Nucor_Header.php';?>
+
 <div>
-  <div id="nav" style="float:left; width: 150px;">
+<div id="nav" style="float:left; margin-left: 1%; max-width: 50%;">
+
     <!--mini nav calendar lives here-->
   </div>
-  <div id="dp" style="margin-left: 150px; margin-top: 60px;">
+  <div id="dp" style="margin-left: 12%; margin-top: 10%; max-width: 85%">
+
   <!--Calendar body (week display) lives here-->
   </div>
 </div>
@@ -278,4 +265,24 @@
                 });
             });*/ //This will not be in the final version
             </script>
+<<<<<<< Updated upstream
 </html>
+
+<!--         </div> -->
+        <div class="clear">
+        </div>
+        
+		<div id="event_pop_up">
+			<div class="popupBoxWrapper">
+				<div class="popupBoxContent" id="event_content">
+					<h1 id="popup_header"></h1>
+						<div id="date_div"></div>
+					<p><button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</button></p>
+				</div>
+			</div>
+		</div>
+		
+		</body>
+
+</html>
+

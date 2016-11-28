@@ -11,15 +11,16 @@
    <!-- Bootstrap core CSS -->
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this page -->
-    <link href="Nucor_Main_Page.css" rel="stylesheet">
+    <link href="nucor_main_page.css" rel="stylesheet">
     <style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
-	background-image: URL(Pictures/Forum_BkGr.png);
+	background-image: URL(pictures/forum_bkgr.png);
 /* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -28,12 +29,13 @@
 	
 	/* 	creates blurred affect */
 	#box {
-		background: url(Pictures/Forum_Blurred.png) no-repeat fixed;
+		background: url(pictures/forum_blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
 	    min-height: 400px;
-		-moz-border-radius: 30px; -webkit-border-radius: 30px;
+		-moz-border-radius: 30px; 
+		-webkit-border-radius: 30px;
 	}
 
 	h1 {
