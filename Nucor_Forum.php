@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--Shannon LaMar   
-  9/2/1016
-  Nucor RFL Main-->
-  <!--test-->
+<!--
+CS452 Capstone Project Fall 2016
+Lia Brannon
+Shaun Dyer
+Andrew Jordan
+Shannon LaMar
+Adam Moses
+-->
 <html>
 <head lang="en">
    <meta charset="utf-8">
@@ -36,6 +40,7 @@
 		margin: 40px auto;
 		margin-top: 15%;
 	    min-height: 400px;
+	    border-radius: 30px;
 		-moz-border-radius: 30px; 
 		-webkit-border-radius: 30px;
 	}

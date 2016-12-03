@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+CS452 Capstone Project Fall 2016
+Lia Brannon
+Shaun Dyer
+Andrew Jordan
+Shannon LaMar
+Adam Moses
+-->
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Photo Gallery</title>

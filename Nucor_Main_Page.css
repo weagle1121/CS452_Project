@@ -24,12 +24,16 @@ body {
 	}
 	
 /* temporary paragraph formatting for about us */
-p{
-	padding-right: 20%;
-	padding-left: 20%;
-
-}
-
+/*
+	p {
+	padding-top: 10%;
+	padding-bottom: 10%;
+	padding-right: 10%;
+	padding-left: 10%;
+	color: white;
+	font-weight: bolder;
+	}
+*/
 
 /* CSS for tables on leaderboard and relay listing pages */
 #t1{
@@ -41,9 +45,9 @@ p{
 Main Page CSS
 ----------------------------
 */
-	/* 	changes color/font of secondary headline */
+/* 	changes color/font of secondary headline */
 
-	h3{
+h3{
 		text-align: center;
 		font-size: 30px;
 		color:#02501e;
@@ -70,14 +74,17 @@ Header CSS
 		min-width:100%;
 	}
 
+
 /*banner image*/
+/* banner image removed
 .banner1{
 	display:block; 
 	width:100%;
 	height:300px;
-/* 	text-align:center; */
 
 	}
+*/
+
 
 /* removes default list settings */
 ul {
@@ -120,11 +127,15 @@ ul {
 
 
 /* removes rounded edges on navbar */
+/*
 * {
+
 	-webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
+
 }
+*/
 
 
 /*

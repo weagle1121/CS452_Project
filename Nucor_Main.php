@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<!--Shannon LaMar   
-  9/2/1016
-  Andrew Jordan
-  10/24/2016
-  Nucor RFL Main-->
-  <!--test-->
+<!--
+CS452 Capstone Project Fall 2016
+Lia Brannon
+Shaun Dyer
+Andrew Jordan
+Shannon LaMar
+Adam Moses
+-->
 <html>
 <head lang="en">
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
-<!--     <link href="bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet"> -->
-    <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+<!--     <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"> -->
    <!-- Custom styles for this site -->
     <link href="nucor_main_page.css" rel="stylesheet">
    <!-- Custom styles for this page -->
@@ -39,7 +41,9 @@
 		margin: 40px auto;
 		margin-top: 15%;
 	    min-height: 400px;
-		-moz-border-radius: 30px; -webkit-border-radius: 30px;
+		border-radius: 30px;
+		-moz-border-radius: 30px; 
+		-webkit-border-radius: 30px;
 	}
 
 	</style>

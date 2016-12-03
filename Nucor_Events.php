@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+CS452 Capstone Project Fall 2016
+Lia Brannon
+Shaun Dyer
+Andrew Jordan
+Shannon LaMar
+Adam Moses
+-->
 <html>
 <head>
     <title>Nucor Events</title>
@@ -9,7 +17,6 @@
         <link type="text/css" rel="stylesheet" href="backend/themes/calendar_traditional.css" />    
         <link type="text/css" rel="stylesheet" href="backend/themes/calendar_transparent.css" />    
         <link type="text/css" rel="stylesheet" href="backend/themes/calendar_white.css" />    
-		
 	<!-- Formatting -->
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +72,6 @@
         <div id="date_div"></div>
           <p>
 		    <button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event
-          </p>
         </div>
       </div>
     </div>
@@ -268,7 +274,7 @@
                 });
             });*/ //This will not be in the final version
             </script>
- </html>
+<!--  </html> -->
 
 <!--         </div> -->
         <div class="clear">
@@ -285,6 +291,5 @@
 		</div>
 		
 		</body>
-
 </html>
 
