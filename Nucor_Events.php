@@ -13,14 +13,17 @@
 	<!-- Formatting -->
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+				<link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+<!--     	<link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"> -->
+        <!-- Custom styles for this site -->
 		<link href="nucor_main_page.css" rel="stylesheet">
 
 	<!-- helper libraries -->
 		<script src="backend/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<!-- daypilot libraries -->
 		<script src="backend/js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
-	<!-- Header for the page -->	
+   <!-- Custom styles for this page -->
 	<style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
@@ -265,8 +268,7 @@
                 });
             });*/ //This will not be in the final version
             </script>
-<<<<<<< Updated upstream
-</html>
+ </html>
 
 <!--         </div> -->
         <div class="clear">

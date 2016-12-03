@@ -10,8 +10,10 @@
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
-        <!-- Custom styles for this page -->
+<!--     <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"> -->
+    <!-- Custom styles for this site -->
     <link href="nucor_main_page.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
     <style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
@@ -50,6 +52,11 @@
 
 <body>
 <!-- 	Bootstrap core JavaScript -->
+<!--
+    <script src="Bootstrap/bootstrap-3.3.7-dist/js/jquery.js"></script>
+    <script src="Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>   
+-->
+
     <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
     <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>    
     <div id = "box">

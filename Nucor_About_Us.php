@@ -9,15 +9,16 @@
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
-   <!-- Custom styles for this page -->
-    <link href="Nucor_Main_Page.css" rel="stylesheet">
+<!--     <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"> -->
+	<!-- Custom styles for this site -->
+    <link href="nucor_main_page.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
     <style type="text/css">
 
 	/*background image, should work across web browsers except internet explorer*/
 
 	body {
 	background-image: URL(pictures/about_us_bkgr.png);
-/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
     background-attachment: fixed;
 	-webkit-background-size: cover;
@@ -32,12 +33,10 @@
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
-/*
-	    min-height: 400px;
-	    max-height: auto;
-*/
 	    height: auto;
-		-moz-border-radius: 30px; -webkit-border-radius: 30px;
+		border-radius: 35px;
+	    -moz-border-radius: 30px; 
+		-webkit-border-radius: 30px;
 	}
 	
 	/* temporary paragraph formatting for about us */
@@ -63,6 +62,11 @@
 <!-- 	Bootstrap core JavaScript -->
     <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
     <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>    
+<!--
+    <script src="Bootstrap/bootstrap-3.3.7-dist/js/jquery.js"></script>
+    <script src="Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>   
+-->
+
 	
 </body>
 </html>
