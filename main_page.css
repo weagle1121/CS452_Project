@@ -1,0 +1,218 @@
+/* Main CSS */
+
+/*
+miscellaneous CSS
+-------------------------------
+*/
+h1, h2, h3, nav, footer {
+ font-family: Arial, Georgia, Cambria, "Times New Roman", serif;
+}
+
+body {
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-size: 1.3em;
+   margin: 0;
+   padding: 0;
+}
+
+/* 	changes color/font of headlines */
+	h2{
+		text-align: center;
+		font-size: 40px;
+		color:#02501e;
+		font-weight: bold;
+	}
+	
+/* temporary paragraph formatting for about us */
+/*
+	p {
+	padding-top: 10%;
+	padding-bottom: 10%;
+	padding-right: 10%;
+	padding-left: 10%;
+	color: white;
+	font-weight: bolder;
+	}
+*/
+
+/* CSS for tables on leaderboard and relay listing pages */
+#t1{
+		color: black;
+		font-weight: bolder;
+	}
+
+/*
+Main Page CSS
+----------------------------
+*/
+/* 	changes color/font of secondary headline */
+
+h3{
+		text-align: center;
+		font-size: 30px;
+		color:#02501e;
+		font-weight: bold;
+	}
+	#sub_A1{
+		color:#ffffff;	
+	}
+	#sub_event_div{
+		color:#ffffff;
+	}
+
+
+/*
+Header CSS
+-------------------------------
+*/
+/* stretches banner across page (can add footer when that's completed)*/
+#header {
+		
+        float:left;
+		padding:15px;
+		padding-bottom: 50px;
+		min-width:100%;
+	}
+
+
+/*banner image*/
+/* banner image removed
+.banner1{
+	display:block; 
+	width:100%;
+	height:300px;
+
+	}
+*/
+
+
+/* removes default list settings */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*Change text color(active)/size here*/
+
+ .navbar-inverse .navbar-nav > li {
+   color:#02501e;
+   font-size: large;
+    }
+ 
+ li a {
+	 color:#4e005e; 
+ }
+ 
+  
+/* Change background color here */
+.navbar-default{
+    background-color: #1f1b1b;
+    border-color: #47007b;
+    border-width: medium;
+    color:#02501e; 
+    
+    
+}
+
+/*changes color of nucor home link*/
+.navbar-default .navbar-brand {
+	color: #0e4813;
+}
+
+/* changes font color of links on navbar */
+.navbar-default .navbar-right >li >a{
+    color: #0e4813;
+}
+
+
+/* removes rounded edges on navbar */
+/*
+
+* {
+
+	-webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+}
+*/
+
+
+
+/*
+General Events CSS
+-------------------------------
+*/
+
+  /* Controls Pop-up box for the Calendar */
+ #event_pop_up{
+		top: 0; 
+		left: 0; 
+		position: fixed; 
+		width: 100%; 
+		height: 120%;
+		background-color: rgba(0,0,0,0.7); 
+		display: none;
+		}
+	.popupBoxWrapper{
+		width: 350px; 
+		height: 80%;
+		overflow: auto;
+		margin: 150px auto; 
+		text-align: center;
+		}
+	.popupBoxContent{
+		background-color: #FFF; 
+		padding: 15px;
+		}
+	
+
+
+/*
+Photo CSS
+-------------------------------
+*/
+
+  /* 	affects position of more albums button*/
+  .dropdown {
+  padding-top: 4%;
+  }
+
+  /* 	affects position of slideshow */
+  .carousel-inner {
+
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-bottom: 15%;
+  }
+/* Unused code */
+
+/*Create a horizontal list*/
+/*
+li {
+	display: inline-block;
+	border-right: 1px solid #bbb;
+	float: right;
+	padding:15px;
+	background-color: #066300;
+	border: 1px solid #6f08b3;
+	
+}
+*/
+
+/*Style for menu links*/
+
+/*
+li a {
+    display: block;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+	padding: 15px 15px 15px 15px;
+}
+*/
+
+
+
+
