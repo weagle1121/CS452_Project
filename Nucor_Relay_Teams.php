@@ -62,7 +62,7 @@ $stmt = $db->prepare("SELECT teams.TID, teams.TNAME, teams.TYEAR, teams.TURL, te
  if($stmt->rowCount())  
  {  
 			echo
-'  <table class="table table-striped" id ="t1">
+'  <table class="table table-hover table-responsive" id ="t1">
     <tbody>';
 			foreach($result as $team)  
 				{  

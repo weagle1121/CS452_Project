@@ -102,7 +102,7 @@ $stmt = $db->prepare("SELECT DISTINCT images.imageALBUM FROM images WHERE imageA
 	<script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
 	<script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
 
-	<script src="Bootstrap/bootstrap-3.0.0-dist/js/carousel.js"></script>
+	<script src="Bootstrap/bootstrap-3.0.0/js/carousel.js"></script>
 
 </body>
 </html>
