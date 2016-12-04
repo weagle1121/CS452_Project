@@ -63,7 +63,16 @@ $stmt = $db->prepare("SELECT teams.TID, teams.TNAME, teams.TYEAR, teams.TURL, te
  {  
 			echo
 '  <table class="table table-hover table-responsive" id ="t1">
-    <tbody>';
+    
+	<thead><tr>
+	<th>Team Name</th>
+	<th>Team Division</th>
+	<th>Year Started</th>
+	<th>Amount Raised</th>
+	</tr></thead>
+	
+	
+	<tbody>';
 			foreach($result as $team)  
 				{  
 					echo

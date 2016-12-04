@@ -70,9 +70,7 @@ Adam Moses
 		var id = 2;
 		$(document).ready(function(){
 			$.post("backend/backend_boards.php", 
-                    {
-                        id:id
-                    }, 
+                    {}, 
                     function(data) {
 						document.getElementById("t1").innerHTML = data;
                     });
