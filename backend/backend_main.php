@@ -2,7 +2,6 @@
 
 /* Start connection to database */
 require_once '_db.php';
-
 /* This code uses PHP Data Objects. PDO is a lean, consistent way to access databases.
 $insert - string to query database
 $stmt (cant be any variable name) - receives data from database query
@@ -15,8 +14,6 @@ java script on Nucor_Main.php:
 $(document).ready(function(){
 			$.post("calendar_lib/backend_main.php", 
                     {
-                        start:firstday,
-						end:lastday,
 						curr:curr
                     }, 
                     function(data) {
@@ -25,18 +22,16 @@ $(document).ready(function(){
 		});
 
 Data sent to php from javascript will be in the form  
-$_POST['start']
-$_POST['end']
 $_POST['curr']
 
 MYSQL function DATE() - returns datetime in form year-month-day ex: 2016-10-24
 
 */
 
-$insert = "SELECT * FROM events WHERE DATE(start) BETWEEN :start AND :end";
+
+$insert = "SELECT * FROM `anouncements` WHERE DATE(end) >= :curr ";
 $stmt = $db->prepare($insert);
-$stmt->bindParam(':start', $_POST['start']);
-$stmt->bindParam(':end', $_POST['end']);
+$stmt->bindParam(':curr', $_POST['curr']);
 $stmt->execute();
 $row_count = $stmt->rowCount();
 $result = $stmt->fetchAll();
@@ -47,9 +42,7 @@ Steps:
 1. In Nucor_Main.php create empty div with id = "announcements" to hold announcements and events
 2. Create container div for all announcements called A1,  it has the CSS of "container" class
 3. foreach loop creates sub divs inside of announce div called SUB_A1
-4. Announcements are stored in the event table and their type is char 'A'
-5. Events are not printed out as they have the type char 'E'
-6. To change CSS element use ids:
+4. To change CSS element use ids:
 		announcement div wrapper - A1
 		header - h3 
 		text - SUB_A1
@@ -60,14 +53,11 @@ echo '<div class="container" id ="A1">';
 	echo'<h2>This Weeks Anouncements:</h2>';
 	foreach($result as $row)  
 				{  
-					if ($row["type"] == 'A')
-					{
-						echo ' 
+					echo ' 
 							<div id = "sub_A1" >
 								<h3><center>'.$row["name"].'</center></h3>
 								<p><center>'.$row["details"].'</center></p> 					 
 							</div>'; 
-					}				
 				}
  }
  else
@@ -91,9 +81,7 @@ Steps:
 1. In Nucor_Main.php create empty div with id = "announcements" to hold announcements and events
 2. Create container div for all events called event_div, it has the CSS of "container" class
 3. The foreach loop creates sub divs inside of event_div called sub_event_div and fills them with data
-4. Events are stored in the event table and their type is char 'E'
-5. Announcements are not printed out as they have the type char 'A'
-6. To change CSS element use ids:
+4. To change CSS element use ids:
 		event div wrapper - event_div
 		header - h3 
 		text - sub_event_div		
@@ -106,14 +94,11 @@ echo'<div class="container" id = "event_div">';
 	
 	foreach($result as $row)  
 				{  
-					if ($row["type"] == 'E')
-					{
-						echo ' 
+					echo ' 
 							<div id = "sub_event_div" >
 								<h3><center>'.$row["name"].'</center></h3>
 								<p><center>'.$row["details"].'</center></p> 					 
 							</div>';
-					}	
 				}
   }  
  else  
