@@ -99,5 +99,47 @@ function valtime($data)
 
 //returns a string like 2016-12-05 15:30:00
 //merge_Date_Time($date,$time,$type);
+//Example:
+//$start_day_time = '2016-12-05T15:16:00';
+//list($newdate,$newtime) = Date_Time_In($start_day_time);
+//$newdate now has the date in the form 2016-12-05
+//$newtime now has the form 3:15
+//echo $newdate;
+//echo $newtime;
 
+function Date_Time_In($data)
+{
+	$blank = array("Error:Database down","Error:database down");
+	$parts = explode('T', $data);
+	
+	if(count($parts) == 2) 
+	{
+		list($date, $time) = $parts;
+		  $parts = explode(':',$time);
+		    if (count($parts)==3)
+			{ 
+		       list($hour, $minute,$second) = $parts;
+			   $checkhour = is_numeric($hour);
+		       $checkminute = is_numeric($minute);
+			   $checksecond = is_numeric($second);
+			   if ($checkhour && $checkminute && $checksecond)
+			   {
+				   if ($hour >12)
+					   $hour -= 12;
+				   
+				   $hour = (string)$hour;
+				   $minute = (string)$minute;
+				   $newtime = $hour.':'.$minute;
+				   $data = array($date,$newtime);
+				   return $data;
+			   }
+			   else
+				   return $blank;
+			}
+		    else
+				   return $blank;	
+	}
+	else 
+		return $blank;	
+}
 ?>
