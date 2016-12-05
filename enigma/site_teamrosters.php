@@ -27,10 +27,10 @@ echo '
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Member</button>
+<span class="glyphicon glyphicon-plus"></span> &nbsp; Create Member</button>
 </div> 
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 }
 session_start();
 include_once 'dbconnect.php';
@@ -185,14 +185,14 @@ if (isset($msg)) {
     <input type="tel" class="form-control" value="'.$memberRow["phone"].'" name="phone">
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" ';
 	if ($memberRow["active"]==TRUE) { echo 'checked '; }
 	echo 'name="active">
 	</label>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Captain?
 	<input type="checkbox" ';
 	if ($memberRow["captain"]==TRUE) { echo 'checked '; }
 	echo 'name="captain">
@@ -200,10 +200,10 @@ if (isset($msg)) {
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
+<span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 			}
 //STILL NEED TO CODE "DELETE TEAM"

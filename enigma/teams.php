@@ -193,7 +193,7 @@ if ($stmt->rowCount()) {
 if ($memberCount == 0 OR $memberCount > 1) {
 	echo 's';
 }
-echo ' !Add active/inactive</h3>
+echo '</h3>
 <form class="form-inline" method="post" autocomplete="off">
 <div class="form-group">
     <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
@@ -240,14 +240,14 @@ echo ' !Add active/inactive</h3>
     <input type="tel" class="form-control" value="'.$memberRow["phone"].'" name="phone">
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" ';
 	if ($memberRow["active"]==TRUE) { echo 'checked '; }
 	echo 'name="active">
 	</label>
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Captain?
 	<input type="checkbox" ';
 	if ($memberRow["captain"]==TRUE) { echo 'checked '; }
 	echo 'name="captain">
@@ -264,7 +264,7 @@ echo '<h3>'.$announceCount.' Announcement';
 if ($announceCount == 0 OR $announceCount > 1) {
 	echo 's';
 }
-echo ' !Add active/inactive</h3>
+echo '</h3>
 <form class="form-inline" method="post">
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Anouncement Name>" name="name">

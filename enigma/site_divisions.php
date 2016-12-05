@@ -86,10 +86,10 @@ if (isset($_POST['btn-add'])) {
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Add Division</button>
+<span class="glyphicon glyphicon-plus"></span> &nbsp; Add Division</button>
 </div> 
 </form>
-<hr>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
 <?php
 $stmt = $db->prepare('SELECT * FROM divisions');
 $stmt->execute();
@@ -110,10 +110,10 @@ if (isset($msg)) {
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
+<span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE DIVISION" (Will need to make sure no teams are associated with it)
 ?>

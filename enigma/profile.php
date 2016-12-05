@@ -29,6 +29,8 @@ if(isset($_POST['btn-details'])) {
 }
 
 if(isset($_POST['btn-pass'])) {
+ if ($_POST['thesauce'] == $_POST['thesauce2'])
+ {
  $rawpassword = strip_tags($_POST['thesauce']);
  $hashed_password = password_hash($rawpassword, PASSWORD_DEFAULT);
  $query = "UPDATE admins SET password = '$hashed_password' WHERE admins.user_id =".$_SESSION['userSession'];
@@ -36,12 +38,19 @@ if(isset($_POST['btn-pass'])) {
    $pmsg = "<div class='alert alert-success'>
       <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Password updated successfully!
      </div>";
-  }else {
+  }
+  else {
    $pmsg = "<div class='alert alert-danger'>
       <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while updating password!
      </div>";
   }
-}
+ }
+ else {
+	 $pmsg = "<div class='alert alert-danger'>
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Passwords do not match!
+     </div>";
+ }
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -124,9 +133,15 @@ if(isset($_POST['btn-pass'])) {
 <h3 class="form-signin-heading">Update password:</h3>
 <form class="form-horizontal" method="post">
 	<div class="form-group">
-	  <label for="pPass" class="col-sm-2 control-label">Password</label>
+	  <label for="pPass" class="col-sm-2 control-label">Enter New Password</label>
 	  <div class="col-sm-10">
 	    <input type="password" class="form-control" name="thesauce" placeholder="<New Password>" required id="pPass" maxlength="32" />
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label for="pPassConfirm" class="col-sm-2 control-label">Re-enter New Password</label>
+	  <div class="col-sm-10">
+	    <input type="password" class="form-control" name="thesauce2" placeholder="<Confirm Password>" required id="pPassConfirm" maxlength="32" />
 	  </div>
 	</div>
 	<div class="form-group">

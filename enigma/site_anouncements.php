@@ -123,13 +123,13 @@ $teamlist = $stmt->fetchall(PDO::FETCH_ASSOC);
 
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Anouncement</button>
+<span class="glyphicon glyphicon-plus"></span> &nbsp; Create Anouncement</button>
 </div> 
 <div class="form-group">
     <textarea class="form-control" placeholder="<Anouncement Text>" name="details" maxlength="600" rows="3" cols="132"></textarea>
 </div>
 </form>
-<hr>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
 <?php
 $stmt = $db->prepare('SELECT * FROM anouncements');
 $stmt->execute();
@@ -171,13 +171,13 @@ echo '  </select>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
+<span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
 <div class="form-group">
     <textarea class="form-control" name="details" maxlength="600" rows="3" cols="132">'.$aRow['details'].'</textarea>
 </div>
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE Anouncement" Also need to consider a mechanism that shows anouncments that have expired in a different section/color?
 ?>

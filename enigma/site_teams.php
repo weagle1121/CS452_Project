@@ -144,10 +144,10 @@ $divisionList = $stmt->fetchall(PDO::FETCH_ASSOC);
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Team</button>
+<span class="glyphicon glyphicon-plus"></span> &nbsp; Create Team</button>
 </div> 
 </form>
-<hr>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
 <?php
 $stmt = $db->prepare('SELECT * FROM teams');
 $stmt->execute();
@@ -159,9 +159,6 @@ if (isset($msg)) {
 			{
 				echo '
 <form class="form-inline" method="post">
-<div class="form-group">
-    <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
-</div>
 <div class="form-group">
     <input type="text" class="form-control" value="'.$teamRow["TNAME"].'" name="tname">
 </div>
@@ -188,7 +185,7 @@ echo '  </select>
     <input type="number" class="form-control" value="'.$teamRow["TRAISED"].'" style="width:7em" name="traised" min="0">
 </div>
 <div class="checkbox">
-    <label class="checkbox-inline">
+    <label class="checkbox-inline">Active?
 	<input type="checkbox" ';
 	if ($teamRow["STATUS"]==TRUE) { echo 'checked '; }
 	echo 'name="status">
@@ -196,10 +193,13 @@ echo '  </select>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
-<span class="glyphicon glyphicon-log-in"></span> &nbsp; Save Update</button>
+<span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
+</div>
 </form>
-<hr>';
+<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE TEAM"
 ?>
