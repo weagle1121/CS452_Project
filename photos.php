@@ -46,14 +46,14 @@ Adam Moses
       <select id="selectedAlbum" onchange="selectAlbum()">
 <?php
 require_once 'backend/_db.php';
-$stmt = $db->prepare("SELECT DISTINCT images.imageALBUM FROM images WHERE imageACTIVE = TRUE");
+$stmt = $db->prepare('SELECT * FROM albums');
 	$stmt->execute();
 	$result = $stmt->fetchAll();
  if($stmt->rowCount())
  {
-	 foreach($result as $row)
+	 foreach($result as $albumRow)
 	 {
-		 echo '        <option value="'.$row["imageALBUM"].'">'.$row["imageALBUM"].'</option>
+		 echo '        <option value="'.$albumRow['id'].'">'.$albumRow['name'].'</option>
 ';
 	 }
  }
