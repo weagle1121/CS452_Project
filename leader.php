@@ -79,7 +79,9 @@ include 'backend/_db.php';
 				<tr>  
                      <td>'.$rankposition.'</td>  
                      <td>'.$row["TNAME"].'</td>  
-                     <td>'.$row["TRAISED"].'</td>  
+                     <td>$ ';
+					 echo number_format($row["TRAISED"], 2, '.', ',');
+					 echo '</td>  
                 </tr>  
 				';
 				$rankposition++;

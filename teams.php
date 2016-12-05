@@ -34,7 +34,7 @@ Adam Moses
 
 	/* 	creates blurred affect */
 	.container {
-		background: url(pictures/team_listing_blurred.png) no-repeat fixed;
+		background: url(pictures/team_listing_blurred.png) no-repeat; // fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -81,8 +81,10 @@ $stmt = $db->prepare("SELECT teams.TID, teams.TNAME, teams.TYEAR, teams.TURL, te
       <td><a href="'.$team["TURL"].'">'.$team["TNAME"].'</a></td>
       <td>'.$team["DNAME"].'</td>
       <td>'.$team["TYEAR"].'</td>
-      <td>'.$team["TRAISED"].'</td>
-    </tr>';  
+      <td>$ ';
+      echo number_format($team["TRAISED"], 2, '.', ',');
+      echo '</td>  
+	  </tr>';  
 	$stmt2 = $db->prepare("SELECT members.name, members.captain FROM members WHERE members.active = 1 AND members.memberof = :teamid ORDER BY members.captain DESC, members.name");
 	$stmt2->bindParam(':teamid',$team['TID'],PDO::PARAM_INT);
 	$stmt2->execute();
