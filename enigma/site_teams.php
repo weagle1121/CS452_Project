@@ -44,10 +44,9 @@ if (isset($_POST['btn-update'])) {
   }
 }
 if (isset($_POST['btn-add'])) {
- $tid = strip_tags($_POST['tid']);
  $status = strip_tags($_POST['status']);
  $tname = strip_tags($_POST['tname']);
- $tdivision = strip_tags($_POST['tdivision']);
+ $did = strip_tags($_POST['did']);
  $tyear = strip_tags($_POST['tyear']);
  $turl = strip_tags($_POST['turl']);
  $traised = strip_tags($_POST['traised']);
@@ -57,7 +56,7 @@ if (isset($_POST['btn-add'])) {
  else
  { $status=FALSE; }
  $query = "INSERT INTO teams (TID, STATUS, TNAME, TDIVISION, TYEAR, TURL, TRAISED)
-					VALUES	  (NULL, '$status', '$tname', '$tdivision', '$tyear', '$turl', '$traised')";
+					VALUES	  (NULL, '$status', '$tname', '$did', '$tyear', '$turl', '$traised')";
  if ($db->query($query)) {
 	   $msg = "<div class='alert alert-success'>
       <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Team created Successfully!
@@ -68,6 +67,32 @@ if (isset($_POST['btn-add'])) {
      </div>";
   }
 }
+
+if (isset($_POST['btn-delete'])) {
+ $tid = strip_tags($_POST['tid']);
+ $query = $db->prepare('SELECT name FROM members WHERE memberof = :tid');
+ $query->bindValue(':tid', $tid, PDO::PARAM_INT);
+ $query->execute();
+ if ($query->rowCount()){
+	   $deletemsg = "<div class='alert alert-danger'>
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; There are members assigned to this team and it cannot be deleted until they are removed!
+     </div>";
+  } else {
+  	$query = $db->prepare('DELETE FROM teams WHERE TID = :tid');
+	$query->bindValue(':tid', $tid, PDO::PARAM_INT);
+	$query->execute();
+	if ($query->rowCount()) {
+		   $deletemsgpass = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Team deleted Successfully!
+     </div>';
+  } else {
+   $deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error deleting team!
+     </div>';
+  }
+}
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +124,7 @@ if (isset($_POST['btn-add'])) {
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li class="active"><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
-		<li><a href="site_anouncements.php">Anouncements</a></li>
+		<li><a href="site_announcements.php">Announcements</a></li>
 		<li><a href="site_events.php">Events</a></li>
 		<li><a href="site_albums.php">Albums</a></li>
 	  </ul>
@@ -196,10 +221,18 @@ echo '  </select>
 <span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
 <div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>
+<div class="form-group">
     <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
 </div>
 </form>
-<hr style="margin-top: 10px; margin-bottom: 10px;">';
+';
+if (isset($deletemsg) && $tid == $teamRow['TID']) {
+   echo $deletemsg;
+  }
+echo '<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE TEAM"
 ?>

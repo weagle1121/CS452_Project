@@ -62,6 +62,21 @@ if (isset($_POST['btn-add'])) {
      </div>";
   }
 }
+if (isset($_POST['btn-delete'])) {
+ $id = strip_tags($_POST['id']);
+ $query = $db->prepare('DELETE FROM events WHERE ID = :id');
+ $query->bindValue(':id', $id, PDO::PARAM_INT);
+ $query->execute();
+ if ($query->rowCount()) {
+		   $deletemsgpass = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Event removed Successfully!
+     </div>';
+  } else {
+   $deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error removing event!
+     </div>';
+  }
+}
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +108,7 @@ if (isset($_POST['btn-add'])) {
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
-		<li><a href="site_anouncements.php">Anouncements</a></li>
+		<li><a href="site_announcements.php">Announcements</a></li>
 		<li class="active"><a href="site_events.php">Events</a></li>
 		<li><a href="site_albums.php">Albums</a></li>
 	  </ul>
@@ -101,6 +116,7 @@ if (isset($_POST['btn-add'])) {
   </div>
 </nav>
 <div class="container" style="margin-top:150px;">
+<?php if (isset($deletemsgpass)) {echo $deletemsgpass;} ?>
 <form class="form-inline" method="post" autocomplete="off">
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Event Name>" name="name">
@@ -138,7 +154,7 @@ $teamlist = $stmt->fetchall(PDO::FETCH_ASSOC);
 </form>
 <hr style="margin-top: 10px; margin-bottom: 10px;">
 <?php
-$stmt = $db->prepare('SELECT * FROM events');
+$stmt = $db->prepare('SELECT * FROM events ORDER BY end DESC');
 $stmt->execute();
 $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 
@@ -180,7 +196,11 @@ echo '  </select>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
-</div> 
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>
 <div class="form-group">
     <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
 </div>
@@ -188,9 +208,13 @@ echo '  </select>
     <textarea class="form-control" name="details" maxlength="600" rows="3" cols="132">'.$aRow['details'].'</textarea>
 </div>
 </form>
-<hr style="margin-top: 10px; margin-bottom: 10px;">';
+';
+if (isset($deletemsg) && $id == $aRow['id']) {
+   echo $deletemsg;
+  }
+echo '<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
-//STILL NEED TO CODE "DELETE Anouncement" Also need to consider a mechanism that shows anouncments that have expired in a different section/color?
+//STILL NEED TO CODE "DELETE Announcement" Also need to consider a mechanism that shows anouncments that have expired in a different section/color?
 ?>
 
 

@@ -29,7 +29,7 @@ MYSQL function DATE() - returns datetime in form year-month-day ex: 2016-10-24
 */
 
 
-$insert = "SELECT * FROM `anouncements` WHERE DATE(end) >= :curr ";
+$insert = "SELECT * FROM `announcements` WHERE DATE(end) >= :curr ";
 $stmt = $db->prepare($insert);
 $stmt->bindParam(':curr', $_POST['curr']);
 $stmt->execute();
@@ -50,7 +50,7 @@ Steps:
 echo '<div class="row" id ="A1">';
  if ( $row_count > 0)
  {
-	echo'<h2>Current Anouncements:</h2>';
+	echo'<h2>Current Announcements:</h2>';
 	foreach($result as $row)  
 				{  
 					echo ' 
@@ -61,7 +61,7 @@ echo '<div class="row" id ="A1">';
 				}
  }
  else
-	echo '<h2>There are no current anouncements.</h2>';
+	echo '<h2>There are no current announcements.</h2>';
 echo '</div>';
 
 

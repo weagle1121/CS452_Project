@@ -80,7 +80,7 @@ if (isset($_POST['btn-upd-announce'])) {
  $end = strip_tags($_POST['end']);
  $details = strip_tags($_POST['details']);
 
- $query = $db->prepare('UPDATE anouncements SET name = :name, start = :start, end = :end, details = :details WHERE id = :id');
+ $query = $db->prepare('UPDATE announcements SET name = :name, start = :start, end = :end, details = :details WHERE id = :id');
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':start', $start, PDO::PARAM_STR);
   $query->bindValue(':end', $end, PDO::PARAM_STR);
@@ -105,7 +105,7 @@ if (isset($_POST['btn-add-announce'])) {
  $tid = strip_tags($_POST['tid']);
  $details = strip_tags($_POST['details']);
 
- $query = "INSERT INTO anouncements (id, TID, name, start, end, details)
+ $query = "INSERT INTO announcements (id, TID, name, start, end, details)
 					VALUES	  (NULL, :name, :start, :end, :tid, :details)";
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':start', $start, PDO::PARAM_STR);
@@ -169,7 +169,7 @@ if ($stmt->rowCount()) {
 			$memberList = $stmt->fetchall(PDO::FETCH_ASSOC);
 			$memberCount = $stmt->rowCount();
 
-			$stmt = $db->prepare('SELECT * FROM anouncements WHERE TID = :currTeam ORDER BY start');
+			$stmt = $db->prepare('SELECT * FROM announcements WHERE TID = :currTeam ORDER BY start');
 			$stmt->bindValue(':currTeam',$teamRow['TID'],PDO::PARAM_STR);
 			$stmt->execute();
 			$announceList = $stmt->fetchall(PDO::FETCH_ASSOC);
@@ -267,7 +267,7 @@ if ($announceCount == 0 OR $announceCount > 1) {
 echo '</h3>
 <form class="form-inline" method="post">
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="<Anouncement Name>" name="name">
+    <input type="text" class="form-control" placeholder="<Announcement Name>" name="name">
 </div>
 <div class="form-group">
     <input type="date" class="form-control" name="start">
@@ -283,7 +283,7 @@ echo '</h3>
 <span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
 </div> 
 <div class="form-group">
-    <textarea class="form-control" placeholder="<Anouncement Text>" name="details" maxlength="600" rows="3" cols="132"></textarea>
+    <textarea class="form-control" placeholder="<Announcement Text>" name="details" maxlength="600" rows="3" cols="132"></textarea>
 </div>
 </form>
 ';

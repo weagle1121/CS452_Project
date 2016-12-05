@@ -84,7 +84,7 @@ if(isset($_POST['btn-pass'])) {
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li><a href="site_teamrosters.php">Team Rosters</a></li>
-		<li><a href="site_anouncements.php">Anouncements</a></li>
+		<li><a href="site_announcements.php">Announcements</a></li>
 		<li><a href="site_events.php">Events</a></li>
 		<li><a href="site_albums.php">Albums</a></li>
 	  </ul>

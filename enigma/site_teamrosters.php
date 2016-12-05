@@ -2,10 +2,6 @@
 function displayCreateMemberForm($teamRow_TID) {
 echo '
 <form class="form-inline" method="post" autocomplete="off">
-<!--Need to hide ID fields-->
-<div class="form-group">
-    <input type="hidden" class="form-control" value="'.$teamRow_TID.'" name="tid">
-</div>
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Name>" name="name">
 </div>
@@ -29,6 +25,9 @@ echo '
 <button type="submit" class="btn btn-default" name="btn-add">
 <span class="glyphicon glyphicon-plus"></span> &nbsp; Create Member</button>
 </div> 
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$teamRow_TID.'" name="tid">
+</div>
 </form>
 <hr style="margin-top: 10px; margin-bottom: 10px;">';
 }
@@ -75,11 +74,11 @@ if (isset($_POST['btn-update'])) {
 
  if ($query->rowCount()) {
 	   $msg = "<div class='alert alert-success'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Team information updated Successfully!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Team member information updated Successfully!
      </div>";
   } else {
    $msg = "<div class='alert alert-danger'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while updating team information!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while updating team member information!
      </div>";
   }
 }
@@ -105,12 +104,28 @@ if (isset($_POST['btn-add'])) {
 					VALUES	  (NULL, '$name', '$email', '$phone', '$active', '$captain', '$tid')";
  if ($db->query($query)) {
 	   $msg = "<div class='alert alert-success'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Team created Successfully!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Team member added successfully!
      </div>";
   } else {
    $msg = "<div class='alert alert-danger'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while creating Team!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error adding team member!
      </div>";
+  }
+}
+if (isset($_POST['btn-delete'])) {
+ $tid = strip_tags($_POST['tid']); //Needed to position notification message properly
+ $id = strip_tags($_POST['id']);
+ $query = $db->prepare('DELETE FROM members WHERE ID = :id');
+ $query->bindValue(':id', $id, PDO::PARAM_INT);
+ $query->execute();
+ if ($query->rowCount()) {
+		   $deletemsgpass = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Team member removed Successfully!
+     </div>';
+  } else {
+   $deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error removing team member!
+     </div>';
   }
 }
 
@@ -144,7 +159,7 @@ if (isset($_POST['btn-add'])) {
 		<li><a href="site_divisions.php">Divisions</a></li>
 		<li><a href="site_teams.php">Teams</a></li>
 		<li class="active"><a href="site_teamrosters.php">Team Rosters</a></li>
-		<li><a href="site_anouncements.php">Anouncements</a></li>
+		<li><a href="site_announcements.php">Announcements</a></li>
 		<li><a href="site_events.php">Events</a></li>
 		<li><a href="site_albums.php">Albums</a></li>
 	  </ul>
@@ -153,7 +168,7 @@ if (isset($_POST['btn-add'])) {
 </nav>
 <div class="container" style="margin-top:150px;">
 <?php
-$stmt = $db->prepare('SELECT TID, TNAME FROM teams WHERE 1 ORDER BY TNAME');
+$stmt = $db->prepare('SELECT TID, TNAME FROM teams ORDER BY TNAME');
 $stmt->execute();
 $teamList = $stmt->fetchall(PDO::FETCH_ASSOC);
 if (isset($msg)) {
@@ -167,14 +182,12 @@ if (isset($msg)) {
 			$stmt->execute();
 			$memberList = $stmt->fetchall(PDO::FETCH_ASSOC);
 			echo '<h3>'.$teamRow['TNAME'].' - '.$stmt->rowCount().' member(s)</h3>';
+			if (isset($deletemsgpass) && $teamRow['TID'] == $tid) {echo $deletemsgpass;}
 			displayCreateMemberForm($teamRow['TID']);
 			foreach($memberList as $memberRow)
 			{
 				echo '
 <form class="form-inline" method="post">
-<div class="form-group">
-    <input type="hidden" class="form-control" value="'.$memberRow['ID'].'" name="id">
-</div>
 <div class="form-group">
     <input type="text" class="form-control" value="'.$memberRow["name"].'" name="name">
 </div>
@@ -201,9 +214,23 @@ if (isset($msg)) {
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
-</div> 
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$memberRow['ID'].'" name="id">
+</div>
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
+</div>
 </form>
-<hr style="margin-top: 10px; margin-bottom: 10px;">';
+';
+if (isset($deletemsg) && $id == $memberRow['ID']) {
+   echo $deletemsg;
+  }
+echo '<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 			}
 //STILL NEED TO CODE "DELETE TEAM"
