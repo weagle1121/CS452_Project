@@ -46,7 +46,10 @@ Adam Moses
 	}
 	
 	</style>
-<?php include 'header.php';?>
+<?php
+include 'header.php';
+include 'backend/_db.php';
+?>
 </head>
 
 <body>
@@ -55,26 +58,43 @@ Adam Moses
 <div class="container">
   <h2>LEADER BOARD</h2>
   <table class="table table-striped table-responsive" id ="t1" >
+  <thead>
+    <tr>
+	  <th>Rank</th>
+	  <th>Team Name</th>
+	  <th>Money Raised</th>
+	</tr>
+  </thead>
+<?php
+	$stmt = $db->prepare('SELECT * FROM `TEAMS` WHERE NOT STATUS = 0 ORDER BY TRAISED DESC');
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+ if ($stmt->rowCount())
+ {  
+      echo '<tbody>';
+	  $rankposition=1;
+		 foreach($result as $row)  
+			{  
+				echo ' 
+				<tr>  
+                     <td>'.$rankposition.'</td>  
+                     <td>'.$row["TNAME"].'</td>  
+                     <td>'.$row["TRAISED"].'</td>  
+                </tr>  
+				';
+				$rankposition++;
+			}
+ }
+ else
+ {
+	 echo '<tr><td colspan="3">No team data!</td></tr>';
+ }
+?>
+ </tbody>
   </table>
 </div>	
-	
 <!-- 	Bootstrap core JavaScript -->
-
-
 	<script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
 	<script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
-
-<!--     <script src="Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>    -->
-
-	<script>
-		var id = 2;
-		$(document).ready(function(){
-			$.post("backend/backend_boards.php", 
-                    {}, 
-                    function(data) {
-						document.getElementById("t1").innerHTML = data;
-                    });
-		});
-	</script> 
 </body>
 </html>
