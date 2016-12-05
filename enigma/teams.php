@@ -276,12 +276,12 @@ echo '</h3>
     <input type="date" class="form-control" name="end">
 </div>
 <div class="form-group">
-    <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
-</div>
-<div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add-announce">
 <span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
 </div> 
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$teamRow['TID'].'" name="tid">
+</div>
 <div class="form-group">
     <textarea class="form-control" placeholder="<Announcement Text>" name="details" maxlength="600" rows="3" cols="132"></textarea>
 </div>
@@ -290,9 +290,6 @@ echo '</h3>
 		foreach($announceList as $aRow)
 		{
 			echo'<form class="form-inline" method="post">
-<div class="form-group">
-    <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
-</div>
 <div class="form-group">
     <input type="text" class="form-control" value="'.$aRow['name'].'" name="name">
 </div>
@@ -306,6 +303,9 @@ echo '</h3>
 <button type="submit" class="btn btn-default" name="btn-upd-announce">
 <span class="glyphicon glyphicon-save"></span>&nbsp;Update</button>
 </div> 
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
+</div>
 <div class="form-group">
     <textarea class="form-control" name="details" maxlength="600" rows="3" cols="132">'.$aRow['details'].'</textarea>
 </div>
