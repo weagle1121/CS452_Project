@@ -101,6 +101,42 @@ if (isset($_POST['btn-add'])) {
      </div>';
   }
 }
+if (isset($_POST['btn-delete'])) {
+ $user_id = strip_tags($_POST['user_id']);
+ if ($user_id == $_SESSION['userSession']) {
+	 $deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; You may not delete your own account!
+     </div>';
+ }
+ else
+	$query = $db->prepare('SELECT TNAME FROM teams WHERE find_in_set(:user_id, admin_ids) ORDER BY TNAME');
+	$query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+	$query->execute();
+	$teams = $query->fetchall(PDO::FETCH_ASSOC);
+	
+	if ($query->rowCount()) {
+		$deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; User is still set as administrator of the following teams and cannot be deleted! ';
+	  foreach ($teams as $teamRow) {
+		  $deletemsg .= $teamRow['TNAME'].' ';
+	  }
+     $deletemsg .= '</div>';
+	}
+	else {
+	$query = $db->prepare('DELETE FROM admins WHERE admins.user_id = :user_id');
+	$query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+	$query->execute();
+	if ($query->rowCount()) {
+		   $deletemsg = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; User deleted Successfully!
+     </div>';
+  } else {
+   $deletemsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error while deleting user!
+     </div>';
+  }
+}
+}
 
 ?>
 <!DOCTYPE html>
@@ -227,10 +263,26 @@ if (isset($msg)) {
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-save"></span> Update</button>
 </div>
-<div id="pwMsg'.$adminRow['user_id'].'"></div>
+';
+if ($adminRow['user_id'] != $_SESSION['userSession'])
+	echo '<div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>';
+else {
+		echo '<div class="form-group">
+<button type="submit" class="btn btn-default disabled" name="btn-delete" disabled>
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>';
+}
+echo '<div id="pwMsg'.$adminRow['user_id'].'"></div>
 </div>
 </form>
-<hr style="margin-top: 10px; margin-bottom: 10px;">';
+';
+if (isset($deletemsg) && $user_id == $adminRow['user_id']) {
+   echo $deletemsg;
+  }
+echo '<hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
 //STILL NEED TO CODE "DELETE USER"
 ?>

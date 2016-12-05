@@ -34,11 +34,11 @@ if (isset($_POST['btn-add'])) {
 					VALUES	  (NULL, '$dname')";
  if ($db->query($query)) {
 	   $msg = "<div class='alert alert-success'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; User created Successfully!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Division created Successfully!
      </div>";
   } else {
    $msg = "<div class='alert alert-danger'>
-      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while creating user!
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Error while creating division!
      </div>";
   }
 }
