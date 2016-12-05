@@ -82,7 +82,7 @@ if (isset($_POST['btn-add'])) {
 <div class="container" style="margin-top:150px;">
 <form class="form-inline" method="post">
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="<Division Name>" name="dname">
+    <input type="text" class="form-control" placeholder="<Division Name>" name="dname" required>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add">
@@ -103,7 +103,7 @@ if (isset($msg)) {
 				echo '
 <form class="form-inline" method="post">
 <div class="form-group">
-    <input type="text" class="form-control" value="'.$divisionRow["DNAME"].'" name="dname">
+    <input type="text" class="form-control" value="'.$divisionRow["DNAME"].'" name="dname" required>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update">

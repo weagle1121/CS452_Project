@@ -30,7 +30,7 @@ if (isset($_POST['btn-update'])) {
  else
  { $site_admin=FALSE; }
 
- if (isset($_POST['thesauce']) || isset($_POST['secsauce'])) {
+ if (($_POST['thesauce'] != '' && $_POST['secsauce'] != '')) {//Password meant to be updated and neither field is blank
 	if ($_POST['thesauce'] == $_POST['secsauce'])
 	{
 		$hashed_password = password_hash($_POST['thesauce'], PASSWORD_DEFAULT);
@@ -49,18 +49,22 @@ if (isset($_POST['btn-update'])) {
       <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Passwords do not match!
      </div>';
 	}
-}
-else
-{
-  //THIS IS THE RIGHT WAY! IT HANDLES ' and " properly!!
-  $query = $db->prepare('UPDATE admins SET name = :name, email = :email, active = :active, site_admin = :site_admin WHERE admins.user_id = :user_id');
-  $query->bindValue(':name', $name, PDO::PARAM_STR);
-  $query->bindValue(':email', $email, PDO::PARAM_STR);
-  $query->bindValue(':active', $active, PDO::PARAM_INT);
-  $query->bindValue(':site_admin', $site_admin, PDO::PARAM_INT);
-  $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-  $query->execute();
- if ($query->rowCount()) {
+ }
+ else if (($_POST['thesauce'] != '' || $_POST['secsauce'] != '')) { //Password meant to be updated but one of them is blank
+ $msg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Passwords do not match!
+     </div>';
+ }
+ else //Both password fields were empty so only update the user's information, not password 
+ {
+		$query = $db->prepare('UPDATE admins SET name = :name, email = :email, active = :active, site_admin = :site_admin WHERE admins.user_id = :user_id');
+		$query->bindValue(':name', $name, PDO::PARAM_STR);
+		$query->bindValue(':email', $email, PDO::PARAM_STR);
+		$query->bindValue(':active', $active, PDO::PARAM_INT);
+		$query->bindValue(':site_admin', $site_admin, PDO::PARAM_INT);
+		$query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+		$query->execute();
+		 if ($query->rowCount()) {
 	   $msg = '<div class="alert alert-success">
       <span class="glyphicon glyphicon-info-sign"></span> &nbsp; User information updated Successfully!
      </div>';
@@ -69,8 +73,10 @@ else
       <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error while updating user information!
      </div>';
   }
-}
-  }
+
+	}
+ }
+ 
 if (isset($_POST['btn-add'])) {
  $name = strip_tags($_POST['name']);
  $email = strip_tags($_POST['email']);
@@ -179,11 +185,11 @@ if (isset($_POST['btn-delete'])) {
 <form class="form-inline" method="post" autocomplete="off">
 <div class="row">
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="<Name>" name="name">
+    <input type="text" class="form-control" placeholder="<Name>" name="name" required>
 </div>
 <div class="form-group">
 	<!-- The 'onfocus' hack below is to keep Chrome from trying to be too helpful with entering default credentials for this site. -->
-    <input type="email" class="form-control" placeholder="<Email>" name="email" onfocus="this.removeAttribute('readonly');" readonly>
+    <input type="email" class="form-control" placeholder="<Email>" name="email" onfocus="this.removeAttribute('readonly');" readonly required>
 </div>
 <div class="form-group">
     <input type="hidden" class="form-control" value="NULL" name="user_id">
@@ -201,6 +207,7 @@ if (isset($_POST['btn-delete'])) {
 </div>
 <div class="row">
 <div class="form-group">
+<?php //Need some sort of client side validation here so that password fields are also required ?>
     <input id="sauce1" type="password" class="form-control" placeholder="<Password>" name="thesauce" onfocus="this.removeAttribute('readonly');" readonly>
 </div>
 <div class="form-group">
