@@ -75,7 +75,7 @@ if (isset($_POST['btn-add'])) {
       <li><a href="profile.php">MY PROFILE</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['username'];?></a></li>
+      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['email'];?></a></li>
       <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
     </ul>
   </div>
@@ -143,9 +143,6 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 				echo '
 <form class="form-inline" method="post">
 <div class="form-group">
-    <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
-</div>
-<div class="form-group">
     <input type="text" class="form-control" value="'.$aRow['name'].'" name="name">
 </div>
 <div class="form-group">
@@ -173,6 +170,9 @@ echo '  </select>
 <button type="submit" class="btn btn-default" name="btn-update">
 <span class="glyphicon glyphicon-save"></span> &nbsp; Save Update</button>
 </div> 
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$aRow['id'].'" name="id">
+</div>
 <div class="form-group">
     <textarea class="form-control" name="details" maxlength="600" rows="3" cols="132">'.$aRow['details'].'</textarea>
 </div>

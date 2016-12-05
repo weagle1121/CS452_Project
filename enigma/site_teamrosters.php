@@ -133,7 +133,7 @@ if (isset($_POST['btn-add'])) {
       <li><a href="profile.php">MY PROFILE</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['username'];?></a></li>
+      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['email'];?></a></li>
       <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
     </ul>
   </div>

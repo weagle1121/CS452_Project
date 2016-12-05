@@ -73,7 +73,7 @@ if(isset($_POST['btn-pass'])) {
       <li class="active"><a href="profile.php">MY PROFILE</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['username'];?></a></li>
+      <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $userRow['email'];?></a></li>
       <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
     </ul>
   </div>
@@ -100,12 +100,6 @@ if(isset($_POST['btn-pass'])) {
   <h3 class="form-signin-heading">Update info:</h3>
   
 <form class="form-horizontal" method="post">
-    <div class="form-group">
-	  <label for="pUName" class="col-sm-2 control-label">Username</label>
-	    <div class="col-sm-10">
-          <input type="text" class="form-control" value="<?php echo $userRow["username"] ?>" name="username" required id="pUName" readonly />
-		</div>
-	</div>
     <div class="form-group">
 	  <label for="pName" class="col-sm-2 control-label">Name</label>
 	    <div class="col-sm-10">

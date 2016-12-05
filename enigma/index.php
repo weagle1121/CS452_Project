@@ -24,7 +24,7 @@ $count = $stmt->rowCount();
   header("Location: teams.php");
  } else {
   $msg = "<div class='alert alert-danger'>
-     <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Invalid Username or Password !
+     <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Invalid Email or Password !
     </div>";
  }
  $db = null;
