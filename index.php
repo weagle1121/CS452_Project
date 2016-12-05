@@ -18,9 +18,7 @@ Adam Moses
     <link href="main_page.css" rel="stylesheet">
    <!-- Custom styles for this page -->
 	<style type="text/css">
-
 	/*background image, should work across web browsers except internet explorer*/
-
 	body {
 	background-image: URL(pictures/main_bkgr.png);
 	background-position: center center fixed;
@@ -30,9 +28,7 @@ Adam Moses
 	-o-background-size: cover;
 	background-size:cover;
 	}
-
 	/* 	creates blurred affect */
-
 	.container {
 		background: url(pictures/leaderboard_blurred.png) no-repeat fixed;
 		width: 75%; 
@@ -43,7 +39,6 @@ Adam Moses
 		-moz-border-radius: 30px; 
 		-webkit-border-radius: 30px;
 	}
-
 	</style>
 	
 	<?php include 'header.php';?>
@@ -52,23 +47,11 @@ Adam Moses
 <body>
 <!-- This div receives html once the javascript has run and data is returned from backend_main.php -->
 	<div class = "container" id = "announcements"></div>	
-
-
+	<!-- 	Bootstrap core JavaScript -->
+    <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
+    <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>  
 
 	<script>
-		// gets current day and time
-		var curr = new Date();
-		
-		// gets the first day of the curent week 
-		var f = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-		// stores the first day of the week as a string in the form y-m-d, chops off time
-		var firstday = f.getFullYear() + '-' + (f.getMonth() + 1) + '-' + f.getDate();
-		
-		// gets the last day of the week
-		var l = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
-		// stores the last day of the week as a string in the forom y-m-d, chops off time
-		var lastday = l.getFullYear() + '-' + (l.getMonth() + 1) + '-' + l.getDate();
-		
 		// gets the current days date and time
 		var d = new Date();		
 		// stores the current day in the form y-m-d, chops off time
@@ -81,26 +64,21 @@ Adam Moses
 		   javascript function sends backend_main.php the start,end, and current
 		   dates and html is returned to the div with the id = "announcements".
 		   The variables start,end,and curr can be accessed in the php
-		   with the name $_POST['start'],$_POST['end'],$_POST['curr']
+		   with the name $_POST['curr']
 		   
 		*/
 		$(document).ready(function(){
 			$.post("backend/backend_main.php", 
                     {
 					// variable_name:data
-						start:firstday,
-						end:lastday,
 						curr:curr
                     }, 
                     function(data) {
-						// returned data from php file goes into the specified div
+						// returned data from php goes into the specified div
 						document.getElementById("announcements").innerHTML = data;
                     });
 		});
-	</script>	
-	<!-- 	Bootstrap core JavaScript -->
-    <script src="Bootstrap/bootstrap-3.0.0/assets/js/jquery.js"></script>
-    <script src="Bootstrap/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>  
-
+	</script>
+	
 </body>
 </html>
