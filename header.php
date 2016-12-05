@@ -1,7 +1,9 @@
 <!-- header file -->
 <div class = "header">
+<!--
   <div id ="banner">
   </div>
+-->
   <div id="topHeaderRow" >
     <nav class ="navbar navbar-default navbar-inverse navbar-fixed-top">
       <div class = "container-fluid">

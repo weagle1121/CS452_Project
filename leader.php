@@ -19,9 +19,7 @@ Adam Moses
     <link href="main_page.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <style type="text/css">
-
-	/*background image, should work across web browsers except internet explorer*/
-
+	/*background image, should work across web browsers*/
 	body {
 	background-image: URL(pictures/leaderboard_bkgr.png);
 /* 	background-repeat: no-repeat; */
@@ -32,7 +30,6 @@ Adam Moses
 	-o-background-size: cover;
 	background-size:cover;
 	}
-
 	/* 	creates blurred affect */
 	.container {
 		background: url(pictures/leaderboard_blurred.png) no-repeat fixed;

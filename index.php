@@ -18,7 +18,7 @@ Adam Moses
     <link href="main_page.css" rel="stylesheet">
    <!-- Custom styles for this page -->
 	<style type="text/css">
-	/*background image, should work across web browsers except internet explorer*/
+	/*background image, should work across web browsers*/
 	body {
 	background-image: URL(pictures/main_bkgr.png);
 	background-position: center center fixed;

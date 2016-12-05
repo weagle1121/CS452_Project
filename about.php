@@ -20,7 +20,7 @@ Adam Moses
     <!-- Custom styles for this page -->
     <style type="text/css">
 
-	/*background image, should work across web browsers except internet explorer*/
+	/*background image, should work across web browsers*/
 
 	body {
 	background-image: URL(pictures/about_us_bkgr.png);
@@ -52,6 +52,7 @@ Adam Moses
 	padding-left: 10%;
 	color: white;
 	font-weight: bolder;
+/* 	font-size: medium; */
 	}
 
 	</style>

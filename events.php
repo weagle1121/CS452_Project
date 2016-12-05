@@ -69,7 +69,7 @@ Adam Moses
         <h1 id="popup_header"></h1>
         <div id="date_div"></div>
           <p>
-		    <button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event
+		    <button type="button" data-href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</button></p>
         </div>
       </div>
     </div>
@@ -283,7 +283,7 @@ Adam Moses
 				<div class="popupBoxContent" id="event_content">
 					<h1 id="popup_header"></h1>
 						<div id="date_div"></div>
-					<p><button type="button" href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</button></p>
+					<p><button type="button" data-href="javascript:void(0)" onclick="toggle_visibility('event_pop_up');">Close Event</button></p>
 				</div>
 			</div>
 		</div>

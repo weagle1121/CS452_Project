@@ -14,15 +14,14 @@ Adam Moses
    <title>Nucor Relay for Life</title>
    <!-- Bootstrap core CSS -->
     <link href="Bootstrap/bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
-<!--     <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"> -->
     <!-- Custom styles for this site-->
     <link href="main_page.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <style type="text/css">
-	/*background image, should work across web browsers except internet explorer*/
+	/*background image, should work across web browsers*/
 	body {
 	background-image: URL(pictures/team_listing_bkgr.png);
-	background-repeat: no-repeat;
+/* 	background-repeat: no-repeat; */
 	background-position: center center fixed;
 	background-attachment: fixed;
 	-webkit-background-size: cover;
@@ -34,7 +33,7 @@ Adam Moses
 
 	/* 	creates blurred affect */
 	.container {
-		background: url(pictures/team_listing_blurred.png) no-repeat; // fixed;
+		background: url(pictures/team_listing_blurred.png) no-repeat fixed;
 		width: 75%; 
 		margin: 40px auto;
 		margin-top: 15%;
@@ -45,7 +44,7 @@ Adam Moses
 	}
 /* 	changes team name link color */
 	a {
-    color: #02501e;
+    color: #47007b;
 	}
 		</style>
 <!--     header file -->
@@ -81,10 +80,8 @@ $stmt = $db->prepare("SELECT teams.TID, teams.TNAME, teams.TYEAR, teams.TURL, te
       <td><a href="'.$team["TURL"].'">'.$team["TNAME"].'</a></td>
       <td>'.$team["DNAME"].'</td>
       <td>'.$team["TYEAR"].'</td>
-      <td>$ ';
-      echo number_format($team["TRAISED"], 2, '.', ',');
-      echo '</td>  
-	  </tr>';  
+      <td>'.$team["TRAISED"].'</td>
+    </tr>';  
 	$stmt2 = $db->prepare("SELECT members.name, members.captain FROM members WHERE members.active = 1 AND members.memberof = :teamid ORDER BY members.captain DESC, members.name");
 	$stmt2->bindParam(':teamid',$team['TID'],PDO::PARAM_INT);
 	$stmt2->execute();

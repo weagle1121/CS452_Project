@@ -19,26 +19,16 @@ body {
 	h2{
 		text-align: center;
 		font-size: 40px;
-		color:#02501e;
+		color: white;
 		font-weight: bold;
 	}
 	
-/* temporary paragraph formatting for about us */
-/*
-	p {
-	padding-top: 10%;
-	padding-bottom: 10%;
-	padding-right: 10%;
-	padding-left: 10%;
-	color: white;
-	font-weight: bolder;
-	}
-*/
 
 /* CSS for tables on leaderboard and relay listing pages */
 #t1{
 		color: black;
 		font-weight: bolder;
+		font-size: medium;
 	}
 
 /*
@@ -50,7 +40,7 @@ Main Page CSS
 h3{
 		text-align: center;
 		font-size: 30px;
-		color:#02501e;
+		color:white;
 		font-weight: bold;
 	}
 	#sub_A1{
@@ -65,7 +55,7 @@ h3{
 Header CSS
 -------------------------------
 */
-/* stretches banner across page (can add footer when that's completed)*/
+/* stretches banner across page (can add footer if/when that's completed)*/
 #header {
 		
         float:left;
@@ -76,14 +66,14 @@ Header CSS
 
 
 /*banner image*/
-/* banner image removed
+/* banner image removed*/
+
 .banner1{
 	display:block; 
 	width:100%;
 	height:300px;
 
 	}
-*/
 
 
 /* removes default list settings */
