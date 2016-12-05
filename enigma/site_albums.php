@@ -151,6 +151,64 @@ else {
      </div>';
 }
 }
+if (isset($_POST['btn-delete-img'])) {
+ $id = strip_tags($_POST['id']);
+ $albumid = strip_tags($_POST['albumid']);
+ $query = $db->prepare('SELECT imagePATH FROM images WHERE imageID = :id LIMIT 1');
+ $query->bindValue(':id', $id, PDO::PARAM_INT);
+ $query->execute();
+ $dbpath = $query->fetch(PDO::FETCH_ASSOC);
+ 
+ if (file_exists('../'.$dbpath['imagePATH'])) {
+	if (unlink('../'.$dbpath['imagePATH'])) {
+	 $delstatus = 'File was deleted from server filesystem';
+    }
+    else {
+	 $delstatus = 'File was not deleted from server filesystem';
+    }
+ }
+ else {
+	 $delstatus = 'File was not present in server filesystem!';
+ }
+ $query = $db->prepare('DELETE FROM images WHERE imageID = :id');
+ $query->bindValue(':id', $id, PDO::PARAM_INT);
+ $query->execute();
+ if ($query->rowCount()) {
+		   $deletemsgpass = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Image removed successfully AND ';
+	  $deletemsgpass .= $delstatus;
+      $deletemsgpass .= '</div>';
+  } else {
+	$deletemsg = '<div class="alert alert-danger">
+<span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error removing image AND ';
+	$deletemsg .= $delstatus;
+    $deletemsg .= '</div>';
+  }
+}
+if (isset($_POST['btn-delete-album'])) {
+ $albumid = strip_tags($_POST['id']);
+ $query = $db->prepare('SELECT imageID FROM images WHERE imageALBUM = :albumid');
+ $query->bindValue(':albumid', $albumid, PDO::PARAM_INT);
+ $query->execute();
+ if ($query->rowCount()){
+	   $deletealbummsg = "<div class='alert alert-danger'>
+      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; There are images assigned to this album and it cannot be deleted until they are removed!
+     </div>";
+  } else {
+  	$query = $db->prepare('DELETE FROM albums WHERE id = :albumid');
+	$query->bindValue(':albumid', $albumid, PDO::PARAM_INT);
+	$query->execute();
+	if ($query->rowCount()) {
+		   $deletealbummsgpass = '<div class="alert alert-success">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Album deleted Successfully!
+     </div>';
+  } else {
+   $deletealbummsg = '<div class="alert alert-danger">
+      <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Error deleting album!
+     </div>';
+  }
+}
+}
 
 ?>
 <!DOCTYPE html>
@@ -194,6 +252,9 @@ else {
 if (isset($addmsg)) {
 	echo $addmsg;
 }
+if (isset($deletealbummsgpass)) {
+	echo $deletealbummsgpass;
+}
 ?>
 <form class="form-inline" method="post" autocomplete="off">
 <div class="form-group">
@@ -225,7 +286,7 @@ echo '</select>
 <hr style="margin-top: 10px; margin-bottom: 10px;">
 ';
 
-$stmt = $db->prepare('SELECT * FROM albums');
+$stmt = $db->prepare('SELECT * FROM albums ORDER BY date DESC');
 $stmt->execute();
 $albums = $stmt->fetchall(PDO::FETCH_ASSOC);
 	 foreach($albums as $albumRow)
@@ -260,17 +321,24 @@ echo '  </select>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update-album">
 <span class="glyphicon glyphicon-save"></span>&nbsp;Update Album</button>
-</div> 
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete-album">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>
 </form>';
 if (isset($addimagemsg) && $albumid == $albumRow['id']) {
    echo $addimagemsg;
+  }
+ if (isset($deletealbummsg) && $albumid == $albumRow['id']) {
+   echo $deletealbummsg;
   }
 echo '
 <br>
 <form class="form-inline" method="post" enctype="multipart/form-data">
 <span class="glyphicon glyphicon-picture"></span> &nbsp;
 <div class="form-group">
-    <input type="text" class="form-control" placeholder="<Image Title>" name="title">
+    <input type="text" class="form-control" placeholder="<Image Title>" name="title" required>
 </div>
 <div class="form-group">
     <input type="text" class="form-control" placeholder="<Caption>" name="caption">
@@ -281,7 +349,7 @@ echo '
 	</label>
 </div>
 <div class="form-group">
-    <input type="file" name="imageFile" id="imageFile">
+    <input type="file" name="imageFile" id="imageFile" required>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-add-image">
@@ -300,6 +368,10 @@ $images = $stmt->fetchall(PDO::FETCH_ASSOC);
 if (isset($albummsg) && $id == $albumRow['id']) {
    echo $albummsg;
   }
+if (isset($deletemsgpass) && $albumid == $albumRow['id']) {
+   echo $deletemsgpass;
+  }
+
 		 foreach($images as $imageRow)
 			{
 				echo '
@@ -321,18 +393,29 @@ if (isset($albummsg) && $id == $albumRow['id']) {
 <div class="form-group">
 <button type="submit" class="btn btn-default" name="btn-update-image">
 <span class="glyphicon glyphicon-save"></span>&nbsp;Update Image</button>
-</div> 
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default" name="btn-delete-img">
+<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+</div>
 <div class="form-group">
     <input type="hidden" class="form-control" value="'.$imageRow['imageID'].'" name="id">
+</div>
+<div class="form-group">
+    <input type="hidden" class="form-control" value="'.$albumRow['id'].'" name="albumid">
 </div>
 </form>';
 if (isset($imagemsg) && $id == $imageRow['imageID']) {
    echo $imagemsg;
   }
+if (isset($deletemsg) && $id == $imageRow['imageID']) {
+   echo $deletemsg;
+  }
+
 echo '
 <hr style="margin-top: 10px; margin-bottom: 10px;">';
 			}
-			}
+	}
 ?>
 
 </div>
