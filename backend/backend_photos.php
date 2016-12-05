@@ -59,7 +59,7 @@ $counter = 1;
 					if ($counter == 1)
 					{
 						echo '      <div class="item active">
-        <img src="'.$row["imagePATH"].'" alt="'.$row["imageYEAR"].'">
+        <img src="'.$row["imagePATH"].'" alt="'.$row['imageTITLE'].'">
         <div class="carousel-caption">
           <h3>'.$row["imageTITLE"].'</h3>
           <p>'.$row["imageCAP"].'</p>
@@ -70,7 +70,7 @@ $counter = 1;
 					if (($row['imageTITLE'] != "error") && $counter!=1)
 					{
 						echo '      <div class="item">
-        <img src="'.$row["imagePATH"].'" alt="'.$row["imageYEAR"].'">
+        <img src="'.$row["imagePATH"].'" alt="'.$row['imageTITLE'].'">
         <div class="carousel-caption">
           <h3>'.$row["imageTITLE"].'</h3>
           <p>'.$row["imageCAP"].'</p>

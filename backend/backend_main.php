@@ -47,10 +47,10 @@ Steps:
 		header - h3 
 		text - SUB_A1
 */
-echo '<div class="container" id ="A1">';
+echo '<div class="row" id ="A1">';
  if ( $row_count > 0)
  {
-	echo'<h2>This Weeks Anouncements:</h2>';
+	echo'<h2>Current Anouncements:</h2>';
 	foreach($result as $row)  
 				{  
 					echo ' 
@@ -87,7 +87,7 @@ Steps:
 		text - sub_event_div		
 */
  
-echo'<div class="container" id = "event_div">';
+echo'<div class="row" id = "event_div">';
  if($row_count > 0)  
  {  
     echo '<h2>Todays Events:</h2>';
